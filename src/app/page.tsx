@@ -1,101 +1,61 @@
-import Image from "next/image";
-import styles from "./page.module.css";
-import Aside from "../components/layouts/aside/Aside";
+"use client";
+import React from "react";
+import Aside from "@/components/layouts/aside/Aside";
+import Header from "@/components/layouts/header/Header";
+import Main from "@/components/layouts/main/Main";
+import Footer from "@/components/layouts/footer/Footer";
+import {
+  UploadOutlined,
+  UserOutlined,
+  VideoCameraOutlined,
+} from "@ant-design/icons";
+import { Input, Layout, Menu } from "antd";
 
-export default function Home() {
-	return (
-		<div>
-			<Aside />
-			<main className={styles.main}>
-				<div className={styles.description}>
-					<p>
-						Get started by editing&nbsp;
-						<code className={styles.code}>src/app/page.tsx</code>
-					</p>
-					<div>
-						<a
-							href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-							target="_blank"
-							rel="noopener noreferrer"
-						>
-							By{" "}
-							<Image
-								src="/vercel.svg"
-								alt="Vercel Logo"
-								className={styles.vercelLogo}
-								width={100}
-								height={24}
-								priority
-							/>
-						</a>
-					</div>
-				</div>
+const items = [
+  UserOutlined,
+  VideoCameraOutlined,
+  UploadOutlined,
+  UserOutlined,
+].map((icon, index) => ({
+  key: String(index + 1),
+  icon: React.createElement(icon),
+  label: `nav ${index + 1}`,
+}));
 
-				<div className={styles.center}>
-					<Image
-						className={styles.logo}
-						src="/next.svg"
-						alt="Next.js Logo"
-						width={180}
-						height={37}
-						priority
-					/>
-				</div>
+const App: React.FC = () => {
+  //   const {
+  //     token: { colorBgContainer, borderRadiusLG },
+  //   } = theme.useToken();
 
-				<div className={styles.grid}>
-					<a
-						href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-						className={styles.card}
-						target="_blank"
-						rel="noopener noreferrer"
-					>
-						<h2>
-							Docs <span>-&gt;</span>
-						</h2>
-						<p>Find in-depth information about Next.js features and API.</p>
-					</a>
+  return (
+    <Layout>
+      <Aside />
+      <Layout style={{ overflowY: "auto" }}>
+        {/* <Header /> */}
+        <Main />
+        {/* <Footer /> */}
+      </Layout>
+    </Layout>
+  );
+};
 
-					<a
-						href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-						className={styles.card}
-						target="_blank"
-						rel="noopener noreferrer"
-					>
-						<h2>
-							Learn <span>-&gt;</span>
-						</h2>
-						<p>
-							Learn about Next.js in an interactive course with&nbsp;quizzes!
-						</p>
-					</a>
+export default App;
 
-					<a
-						href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-						className={styles.card}
-						target="_blank"
-						rel="noopener noreferrer"
-					>
-						<h2>
-							Templates <span>-&gt;</span>
-						</h2>
-						<p>Explore starter templates for Next.js.</p>
-					</a>
+// import { Layout } from "antd";
+// import Aside from "@/components/layouts/aside/Aside";
+// import Footer from "@/components/layouts/footer/Footer";
+// import Main from "@/components/layouts/main/Main";
+// import Header from "../components/layouts/header/Header";
 
-					<a
-						href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-						className={styles.card}
-						target="_blank"
-						rel="noopener noreferrer"
-					>
-						<h2>
-							Deploy <span>-&gt;</span>
-						</h2>
-						<p>
-							Instantly deploy your Next.js site to a shareable URL with Vercel.
-						</p>
-					</a>
-				</div>
-			</main>
-		</div>
-	);
-}
+// export default function Home() {
+//   return (
+//     <Layout>
+//       <Aside />
+//       <Layout>
+//         <Header />
+//         {/* <Main />
+//         <Footer /> */}
+//       </Layout>
+//     </Layout>
+//   );
+// }
