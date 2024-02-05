@@ -1,6 +1,6 @@
 import Image from "next/image";
 import styles from "./page.module.css";
-import Aside from "../components/Aside";
+import Aside from "../components/layouts/aside/Aside";
 
 export default function Home() {
 	return (
