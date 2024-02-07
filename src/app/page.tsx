@@ -31,9 +31,9 @@ const App: React.FC = () => {
     <Layout>
       <Aside />
       <Layout style={{ overflowY: "auto" }}>
-        {/* <Header /> */}
+        <Header />
         <Main />
-        {/* <Footer /> */}
+        <Footer />
       </Layout>
     </Layout>
   );

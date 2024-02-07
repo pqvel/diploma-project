@@ -62,6 +62,11 @@ const AntdMarkdown: FC<Props> = ({ children }) => {
               />
             );
           },
+          code: ({ children = "" }) => {
+            const found = children.match(/<input.*?>/g);
+            console.log(found);
+            return <code>{children}</code>;
+          },
         }}
       >
         {children}

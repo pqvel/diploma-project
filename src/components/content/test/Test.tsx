@@ -1,5 +1,5 @@
 import { FC, useState } from "react";
-import { Button, Form, Typography, Checkbox, Row, Col } from "antd";
+import { Button, Form, Typography, Radio, Row, Col, Space } from "antd";
 import { Block } from "@/components/UI/Block";
 // добавить MultipleChoose и OneChoose
 const { Title, Paragraph } = Typography;
@@ -33,15 +33,17 @@ const Test: FC<Props> = ({ title, descr, variants, rightAnswers }) => {
           <Title level={3}>{title}</Title>
           <Paragraph>{descr}</Paragraph>
         </Typography>
-        <Checkbox.Group>
-          <Row>
+        <Radio.Group
+        // onChange={onChange} value={value}
+        >
+          <Space direction="vertical">
             {variants.map(({ title, id }) => (
-              <Col span={16}>
-                <Checkbox value={title}>{title}</Checkbox>
-              </Col>
+              <Radio key={id} value={title}>
+                {title}
+              </Radio>
             ))}
-          </Row>
-        </Checkbox.Group>
+          </Space>
+        </Radio.Group>
       </Form>
     </Block>
   );

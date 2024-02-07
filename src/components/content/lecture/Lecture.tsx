@@ -33,6 +33,18 @@ corpus. Sine Ismario, standi et comas infectum ferunt invecta Auram stagna urbes
 quod. Figurae admovit ventis agros recuset flebant caeruleam excutit denique:
 teloque viso nec infelix rugis, veteres.
 
+\`\`\`
+const Lecture: FC = () => (
+  <input type="text">
+  <Block>
+    <AntdMarkdown>{markdown}</AntdMarkdown>
+  </Block>
+);
+
+export default Lecture;
+\`\`\`.
+<input type="text" placeholder="Введите текст здесь">
+<input type="text" placeholder="Nекст здесь">
 > Sortis habebat creditur; **oppida**, et voce. His *tibi iuranda secedere*
 > cupies non quodque molimina esto, callidus sumptis. Hydrae laterique illius,
 > *non* formam [fuit](http://sicmari.com/culmine.html), sollicitatque iubet.

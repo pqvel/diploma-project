@@ -2,6 +2,7 @@ import { FC } from "react";
 import { Layout } from "antd";
 import Lecture from "@/components/content/lecture/Lecture";
 import Test from "@/components/content/test/Test";
+import Correlate from "@/components/content/correlate/Correlate";
 
 const Main: FC = () => {
   return (
@@ -18,6 +19,7 @@ const Main: FC = () => {
         ]}
         rightAnswers={[]}
       />
+      <Correlate />
     </Layout.Content>
   );
 };
