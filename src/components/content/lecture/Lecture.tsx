@@ -42,7 +42,9 @@ const Lecture: FC = () => (
 );
 
 export default Lecture;
-\`\`\`.
+\`\`\`
+
+.
 <input type="text" placeholder="Введите текст здесь">
 <input type="text" placeholder="Nекст здесь">
 > Sortis habebat creditur; **oppida**, et voce. His *tibi iuranda secedere*
