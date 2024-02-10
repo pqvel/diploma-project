@@ -1,13 +1,7 @@
-import { FC, useState } from "react";
-import { Button, Form, Typography, Radio, Row, Col, Space } from "antd";
-import { Block } from "@/components/UI/Block";
-// добавить MultipleChoose и OneChoose
+import { FC } from "react";
+import { Form, Typography, Radio, Space } from "antd";
+import { Block } from "@/components/UI";
 const { Title, Paragraph } = Typography;
-
-const enum TestInputType {
-  radio = "radio",
-  checkbox = "checkbox",
-}
 
 type Variant = {
   id: string;
@@ -18,14 +12,10 @@ type Props = {
   title: string;
   descr: string;
   variants: Variant[];
-  rightAnswers: Variant[];
+  rightAnswer: Variant;
 };
 
-const Test: FC<Props> = ({ title, descr, variants, rightAnswers }) => {
-  const inputType: TestInputType =
-    rightAnswers.length === 1 ? TestInputType.radio : TestInputType.checkbox;
-  const [selectedVariants, setSelectedVariants] = useState<Variant[]>([]);
-
+const Test: FC<Props> = ({ title, descr, variants, rightAnswer }) => {
   return (
     <Block>
       <Form>
@@ -33,9 +23,7 @@ const Test: FC<Props> = ({ title, descr, variants, rightAnswers }) => {
           <Title level={3}>{title}</Title>
           <Paragraph>{descr}</Paragraph>
         </Typography>
-        <Radio.Group
-        // onChange={onChange} value={value}
-        >
+        <Radio.Group>
           <Space direction="vertical">
             {variants.map(({ title, id }) => (
               <Radio key={id} value={title}>
@@ -47,11 +35,6 @@ const Test: FC<Props> = ({ title, descr, variants, rightAnswers }) => {
       </Form>
     </Block>
   );
-};
-
-type TestInputProps = {
-  title: string;
-  type: TestInputType;
 };
 
 export default Test;

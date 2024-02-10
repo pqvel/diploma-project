@@ -20,6 +20,11 @@ const Main: FC = () => {
         rightAnswers={[]}
       />
       <Correlate />
+      <pre>
+        <code>let arr =</code>
+        <code>for (let i in array) {"{"}</code>sa
+        <input placeholder="text" />
+      </pre>
     </Layout.Content>
   );
 };

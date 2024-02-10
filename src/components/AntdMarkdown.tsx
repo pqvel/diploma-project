@@ -8,6 +8,7 @@ type MarkdownComponents = {
   [key: string]: (props: { children: string }) => ReactNode;
 };
 
+const useInputsInCode = () => {};
 const toAntdMarkdown = (
   tagNames: string[],
   callback: (tagName: string) => (props: { children: string }) => ReactNode
@@ -43,9 +44,9 @@ const AntdMarkdown: FC<Props> = ({ children }) => {
           p: ({ children }) => (
             <Typography.Paragraph>{children}</Typography.Paragraph>
           ),
-          ol: ({ children }: { children: any }) => {
+          ol: ({ children }) => {
             const items: string[] = [];
-            children.forEach(
+            children!.forEach(
               (item: { type: string; props: { children: string } }) => {
                 if (item.type) {
                   items.push(item.props.children);
@@ -61,6 +62,9 @@ const AntdMarkdown: FC<Props> = ({ children }) => {
                 )}
               />
             );
+          },
+          code: ({ children }) => {
+            return <code></code>;
           },
         }}
       >

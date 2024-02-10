@@ -7,3 +7,5 @@ export const Block = styled.div`
   padding: 16px;
   margin-bottom: 16px;
 `;
+
+<Block></Block>;

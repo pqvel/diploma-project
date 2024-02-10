@@ -39,16 +39,20 @@ const Correlate: FC = () => {
   return (
     <Block>
       <Row gutter={[16, 16]} justify="start">
-        <Col span={6}>
+        <Row>
           {items.left.map(({ id, text }) => (
-            <SelectInput key={id} text={text} />
+            <Col span={6}>
+              <SelectInput key={id} text={text} />
+            </Col>
           ))}
-        </Col>
-        <Col span={6}>
+        </Row>
+        <Row>
           {items.right.map(({ id, text }) => (
-            <SelectInput key={id} text={text} />
+            <Col span={6}>
+              <SelectInput key={id} text={text} />
+            </Col>
           ))}
-        </Col>
+        </Row>
       </Row>
     </Block>
   );
