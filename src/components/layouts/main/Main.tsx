@@ -7,7 +7,12 @@ import Correlate from "@/components/content/correlate/Correlate";
 const Main: FC = () => {
   return (
     <Layout.Content
-      style={{ background: "white", padding: 16, minHeight: "unset" }}
+      style={{
+        background: "white",
+        padding: 16,
+        minHeight: "unset",
+        backgroundColor: "#f4f4f4",
+      }}
     >
       <Lecture />
       <Test
