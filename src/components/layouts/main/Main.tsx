@@ -6,7 +6,9 @@ import Correlate from "@/components/content/correlate/Correlate";
 
 const Main: FC = () => {
   return (
-    <Layout.Content style={{ background: "white", padding: 16 }}>
+    <Layout.Content
+      style={{ background: "white", padding: 16, minHeight: "unset" }}
+    >
       <Lecture />
       <Test
         title="Repellendus molestias"
@@ -20,11 +22,6 @@ const Main: FC = () => {
         rightAnswer={{ id: "2", title: "variant 2" }}
       />
       <Correlate />
-      <pre>
-        <code>let arr =</code>
-        <code>for (let i in array) {"{"}</code>sa
-        <input placeholder="text" />
-      </pre>
     </Layout.Content>
   );
 };
