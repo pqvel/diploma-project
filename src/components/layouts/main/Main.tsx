@@ -17,7 +17,7 @@ const Main: FC = () => {
           { id: "3", title: "variant 3" },
           { id: "4", title: "variant 4" },
         ]}
-        rightAnswers={[]}
+        rightAnswer={{ id: "2", title: "variant 2" }}
       />
       <Correlate />
       <pre>
