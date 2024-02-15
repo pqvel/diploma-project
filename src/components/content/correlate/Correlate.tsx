@@ -41,14 +41,14 @@ const Correlate: FC = () => {
       <Row gutter={[16, 16]} justify="start">
         <Row>
           {items.left.map(({ id, text }) => (
-            <Col span={6}>
+            <Col key={id} span={6}>
               <SelectInput key={id} text={text} />
             </Col>
           ))}
         </Row>
         <Row>
           {items.right.map(({ id, text }) => (
-            <Col span={6}>
+            <Col key={id} span={6}>
               <SelectInput key={id} text={text} />
             </Col>
           ))}
