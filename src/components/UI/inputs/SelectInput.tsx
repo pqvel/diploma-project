@@ -23,8 +23,9 @@ const StyledSelectInput = styled.label`
   }
 
   &.disabled {
-    background-color: black;
-    color: white;
+    animation: completed 1s linear forwards;
+    color: black;
+    cursor: default;
   }
 
   &:hover {
@@ -41,6 +42,15 @@ const StyledSelectInput = styled.label`
     line-height: 130%;
     max-height: 2.6em;
     overflow: hidden;
+  }
+
+  @keyframes completed {
+    0% {
+      background-color: green;
+    }
+    100% {
+      background-color: #e6e6e6;
+    }
   }
 `;
 

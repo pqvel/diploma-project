@@ -32,7 +32,7 @@ const Correlate: FC<Props> = ({ correlateItems }) => {
 
   useEffect(() => {
     if (leftSelectItem && rightSelectItem) {
-      if (leftSelectItem.pairItemId === rightSelectItem.pairItemId) {
+      if (leftSelectItem.id === rightSelectItem.pairItemId) {
         setItems((items) => ({
           right: items.right.map((item) =>
             item.id === rightSelectItem.id
