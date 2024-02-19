@@ -1,138 +1,90 @@
-import { FC } from "react";
-import { Space, Row, Col } from "antd";
+import { FC, useEffect, useState } from "react";
+import { Row, Col, Typography } from "antd";
 import { Block, SelectInput } from "@/components/UI";
-import { v4 as uuid } from "uuid";
 
 type ItemType = {
-  text: string;
   id: string;
+  pairItemId: string;
+  text: string;
+  isDisabled: boolean;
 };
 
-const enum Side {
-  left = "left",
-  right = "right",
+type Props = {
+  correlateItems: {
+    left: ItemType[];
+    right: ItemType[];
+  };
+};
+
+const enum Status {
+  Idle = "IDLE",
+  Error = "ERROR",
+  Confirm = "ERROR",
 }
 
-const Correlate: FC = () => {
-  const items = {
-    left: [
-      { id: "1", text: "let" },
-      { id: "2", text: "var" },
-      { id: "3", text: "const" },
-    ],
-    right: [
-      { id: "4", text: "Глобальная переменная которую можно изменить" },
-      { id: "5", text: "Глобальная переменная которую можно изменить" },
-      { id: "6", text: "Глобальная переменная которую можно изменить" },
-    ],
-    answers: {
-      "1": "4",
-      "2": "5",
-      "3": "6",
-    },
-  };
+/**
+ требования к компоненту
+ */
+const Correlate: FC<Props> = ({ correlateItems }) => {
+  const [items, setItems] = useState(correlateItems);
+  const [leftSelectItem, setLeftSelectItem] = useState<ItemType | null>(null);
+  const [rightSelectItem, setRightSelectItem] = useState<ItemType | null>(null);
 
-  // const selected = null;
-
-  const handleCorrelate = (side: Side, id: string) => {};
+  useEffect(() => {
+    if (leftSelectItem && rightSelectItem) {
+      if (leftSelectItem.pairItemId === rightSelectItem.pairItemId) {
+        setItems((items) => ({
+          right: items.right.map((item) =>
+            item.id === rightSelectItem.id
+              ? { ...item, isDisabled: true }
+              : item
+          ),
+          left: items.left.map((item) =>
+            item.id === leftSelectItem.id ? { ...item, isDisabled: true } : item
+          ),
+        }));
+      } else {
+      }
+    }
+  }, [leftSelectItem, rightSelectItem]);
 
   return (
     <Block>
+      <Typography.Title level={3}>Соотнесите варианты ответов</Typography.Title>
       <Row gutter={[16, 16]} justify="start">
-        <Row>
-          {items.left.map(({ id, text }) => (
-            <Col key={id} span={6}>
-              <SelectInput key={id} text={text} />
-            </Col>
+        <Col style={{ maxWidth: "400px", width: "100%" }}>
+          {items.left.map((item) => (
+            <SelectInput
+              key={item.id}
+              text={item.text}
+              isChecked={item.id === leftSelectItem?.id}
+              isDisabled={item.isDisabled}
+              handleChange={() =>
+                setLeftSelectItem((selectedItem) =>
+                  selectedItem?.id === item.id ? null : item
+                )
+              }
+            />
           ))}
-        </Row>
-        <Row>
-          {items.right.map(({ id, text }) => (
-            <Col key={id} span={6}>
-              <SelectInput key={id} text={text} />
-            </Col>
+        </Col>
+        <Col style={{ maxWidth: "400px", width: "100%" }}>
+          {items.right.map((item) => (
+            <SelectInput
+              key={item.id}
+              text={item.text}
+              isChecked={item.id === rightSelectItem?.id}
+              isDisabled={item.isDisabled}
+              handleChange={() =>
+                setRightSelectItem((selectedItem) =>
+                  selectedItem?.id === item.id ? null : item
+                )
+              }
+            />
           ))}
-        </Row>
+        </Col>
       </Row>
     </Block>
   );
 };
 
 export default Correlate;
-
-// import React, { useState, useEffect } from "react";
-
-// const Correlate = () => {
-//   const [firstList, setFirstList] = useState([]);
-//   const [secondList, setSecondList] = useState([]);
-//   const [matchedPairs, setMatchedPairs] = useState([]);
-//   const [selectedItem, setSelectedItem] = useState(null);
-
-//   // Генерация случайных списков
-//   useEffect(() => {
-//     const generateRandomList = () => {
-//       const items = ["Item 1", "Item 2", "Item 3", "Item 4", "Item 5"];
-//       const shuffledItems = [...items].sort(() => Math.random() - 0.5);
-//       setFirstList(shuffledItems);
-//       setSecondList([...shuffledItems].sort(() => Math.random() - 0.5));
-//     };
-
-//     generateRandomList();
-//   }, []);
-
-//   // Проверка на совпадение выбранного элемента
-//   useEffect(() => {
-//     if (selectedItem !== null) {
-//       const matchedIndex = firstList.findIndex((item) => item === selectedItem);
-//       if (matchedIndex !== -1 && secondList[matchedIndex] === selectedItem) {
-//         setMatchedPairs((prevState) => [...prevState, selectedItem]);
-//       }
-//       setSelectedItem(null);
-//     }
-//   }, [selectedItem, firstList, secondList]);
-
-//   // Обработчик клика по элементу из первого списка
-//   const handleItemClick = (item) => {
-//     if (!matchedPairs.includes(item)) {
-//       setSelectedItem(item);
-//     }
-//   };
-
-//   return (
-//     <div>
-//       <div style={{ display: "flex", justifyContent: "space-around" }}>
-//         <div>
-//           <h2>Первый список</h2>
-//           <ul>
-//             {firstList.map((item) => (
-//               <li
-//                 key={item}
-//                 onClick={() => handleItemClick(item)}
-//                 style={{ cursor: "pointer" }}
-//               >
-//                 {item}
-//               </li>
-//             ))}
-//           </ul>
-//         </div>
-//         <div>
-//           <h2>Второй список</h2>
-//           <ul>
-//             {secondList.map((item) => (
-//               <li key={item}>
-//                 {matchedPairs.includes(item) ? <del>{item}</del> : item}
-//               </li>
-//             ))}
-//           </ul>
-//         </div>
-//       </div>
-//       <h2>Совпавшие пары</h2>
-//       <ul>
-//         {matchedPairs.map((item) => (
-//           <li key={item}>{item}</li>
-//         ))}
-//       </ul>
-//     </div>
-//   );
-// };
-// export default Correlate;

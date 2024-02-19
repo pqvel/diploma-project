@@ -26,7 +26,35 @@ const Main: FC = () => {
         ]}
         rightAnswer={{ id: "2", title: "variant 2" }}
       />
-      <Correlate />
+      <Correlate
+        correlateItems={{
+          left: [
+            { id: "1", text: "let", pairItemId: "4", isDisabled: false },
+            { id: "2", text: "var", pairItemId: "5", isDisabled: false },
+            { id: "3", text: "const", pairItemId: "6", isDisabled: false },
+          ],
+          right: [
+            {
+              id: "6",
+              text: "ключевое слово языка для объявления констант. Константа — переменная, значение которой нельзя переназначит",
+              pairItemId: "3",
+              isDisabled: false,
+            },
+            {
+              id: "4",
+              text: "выражение позволяет объявить переменные с областью видимости ограниченной одним выражением.",
+              pairItemId: "1",
+              isDisabled: false,
+            },
+            {
+              id: "5",
+              text: " Отсутствие блочной области видимости.",
+              pairItemId: "2",
+              isDisabled: false,
+            },
+          ],
+        }}
+      />
     </Layout.Content>
   );
 };

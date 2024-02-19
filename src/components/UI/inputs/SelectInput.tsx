@@ -1,30 +1,76 @@
-import { FC } from "react";
+import { ChangeEvent, FC } from "react";
 import styled from "styled-components";
-
-type SelectInputProps = {
-  text: string;
-};
 
 const StyledSelectInput = styled.label`
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 8px;
-  padding: 12px 24px;
-  background-color: #fff;
+  height: 70px;
+  padding: 0 24px;
+  background-color: "#fff";
   border: 1px solid #ececec;
+  margin-bottom: 16px;
   cursor: pointer;
+
+  &.checked {
+    background-color: green;
+    color: white;
+
+    &:hover {
+      background-color: #006900;
+    }
+  }
+
+  &.disabled {
+    background-color: black;
+    color: white;
+  }
+
+  &:hover {
+    background-color: #f5f5f5;
+    border: 1px solid #e7e7e7;
+    box-shadow: 0px 0px 5px 0px rgba(240, 240, 240, 1);
+  }
 
   input {
     display: none;
   }
+
+  span {
+    line-height: 130%;
+    max-height: 2.6em;
+    overflow: hidden;
+  }
 `;
 
-export const SelectInput: FC<SelectInputProps> = ({ text }) => {
+type SelectInputProps = {
+  text: string;
+  isChecked: boolean;
+  isDisabled: boolean;
+  handleChange: () => void;
+};
+
+export const SelectInput: FC<SelectInputProps> = ({
+  text,
+  isChecked,
+  isDisabled,
+  handleChange,
+}) => {
+  const classReducer = () => {
+    if (isDisabled) return "disabled";
+    if (isChecked) return "checked";
+    return "";
+  };
   return (
-    <StyledSelectInput>
-      <input type="checkbox" />
-      {text}
+    <StyledSelectInput className={classReducer()}>
+      <input
+        type="checkbox"
+        disabled={isDisabled}
+        onChange={handleChange}
+        checked={isChecked}
+      />
+      <span>{text}</span>
     </StyledSelectInput>
   );
 };
