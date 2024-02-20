@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { TestStatus } from "../content/test/Test";
 
 export const Block = styled.div`
   background: white;

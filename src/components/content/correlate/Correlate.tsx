@@ -19,7 +19,7 @@ type Props = {
 const enum Status {
   Idle = "IDLE",
   Error = "ERROR",
-  Confirm = "ERROR",
+  Completed = "COMPLETED",
 }
 
 /**
@@ -29,22 +29,30 @@ const Correlate: FC<Props> = ({ correlateItems }) => {
   const [items, setItems] = useState(correlateItems);
   const [leftSelectItem, setLeftSelectItem] = useState<ItemType | null>(null);
   const [rightSelectItem, setRightSelectItem] = useState<ItemType | null>(null);
+  const [status, setStatus] = useState<Status>(Status.Idle);
 
   useEffect(() => {
-    if (leftSelectItem && rightSelectItem) {
-      if (leftSelectItem.id === rightSelectItem.pairItemId) {
-        setItems((items) => ({
-          right: items.right.map((item) =>
-            item.id === rightSelectItem.id
-              ? { ...item, isDisabled: true }
-              : item
-          ),
-          left: items.left.map((item) =>
-            item.id === leftSelectItem.id ? { ...item, isDisabled: true } : item
-          ),
-        }));
-      } else {
-      }
+    if (!leftSelectItem || !rightSelectItem) return;
+
+    if (leftSelectItem.id === rightSelectItem.pairItemId) {
+      setItems((items) => ({
+        right: items.right.map((item) =>
+          item.id === rightSelectItem.id ? { ...item, isDisabled: true } : item
+        ),
+        left: items.left.map((item) =>
+          item.id === leftSelectItem.id ? { ...item, isDisabled: true } : item
+        ),
+      }));
+      setLeftSelectItem(null);
+      setRightSelectItem(null);
+    } else {
+      setStatus(Status.Error);
+
+      setTimeout(() => {
+        setStatus(Status.Idle);
+        setLeftSelectItem(null);
+        setRightSelectItem(null);
+      }, 2000);
     }
   }, [leftSelectItem, rightSelectItem]);
 
@@ -59,7 +67,11 @@ const Correlate: FC<Props> = ({ correlateItems }) => {
               text={item.text}
               isChecked={item.id === leftSelectItem?.id}
               isDisabled={item.isDisabled}
+              isError={
+                item.id === leftSelectItem?.id && status === Status.Error
+              }
               handleChange={() =>
+                status !== Status.Error &&
                 setLeftSelectItem((selectedItem) =>
                   selectedItem?.id === item.id ? null : item
                 )
@@ -74,6 +86,9 @@ const Correlate: FC<Props> = ({ correlateItems }) => {
               text={item.text}
               isChecked={item.id === rightSelectItem?.id}
               isDisabled={item.isDisabled}
+              isError={
+                item.id === rightSelectItem?.id && status === Status.Error
+              }
               handleChange={() =>
                 setRightSelectItem((selectedItem) =>
                   selectedItem?.id === item.id ? null : item
