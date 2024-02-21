@@ -22,9 +22,6 @@ const enum Status {
   Completed = "COMPLETED",
 }
 
-/**
- требования к компоненту
- */
 const Correlate: FC<Props> = ({ correlateItems }) => {
   const [items, setItems] = useState(correlateItems);
   const [leftSelectItem, setLeftSelectItem] = useState<ItemType | null>(null);

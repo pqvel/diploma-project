@@ -14,11 +14,11 @@ const StyledSelectInput = styled.label`
   cursor: pointer;
 
   &.checked {
-    background-color: green;
+    background-color: rgba(0, 56, 177, 0.7);
     color: white;
 
     &:hover {
-      background-color: #006900;
+      background-color: rgba(0, 56, 177, 0.75);
     }
   }
 
@@ -69,9 +69,6 @@ const StyledSelectInput = styled.label`
     0% {
       background-color: rgba(255, 0, 0, 0.8);
     }
-    /* 70% {
-      background-color: red;
-    } */
     100% {
       background-color: #fff;
     }

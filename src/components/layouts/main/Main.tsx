@@ -1,8 +1,8 @@
 import { FC } from "react";
 import { Layout } from "antd";
-import Lecture from "@/components/content/lecture/Lecture";
-import Test from "@/components/content/test/Test";
-import Correlate from "@/components/content/correlate/Correlate";
+import Lecture from "@/components/content/Lecture";
+import Test from "@/components/content/Test";
+import Correlate from "@/components/content/Correlate";
 
 const Main: FC = () => {
   return (
