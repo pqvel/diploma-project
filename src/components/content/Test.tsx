@@ -40,13 +40,14 @@ const Test: FC<Props> = ({ title, descr, variants, rightAnswer }) => {
           <Title level={3}>{title}</Title>
           <Paragraph>{descr}</Paragraph>
         </Typography>
-        <Radio.Group>
+        <Radio.Group style={{ marginBottom: 16 }}>
           <Space direction="vertical">
             {variants.map(({ title, id }) => (
               <Radio
                 onChange={() => setSelectedVariant({ title, id })}
                 key={id}
                 value={title}
+                disabled={testStatus !== TestStatus.Idle}
               >
                 {title}
               </Radio>
@@ -55,11 +56,13 @@ const Test: FC<Props> = ({ title, descr, variants, rightAnswer }) => {
         </Radio.Group>
         <Space size={16} />
         {testStatus !== TestStatus.Idle && (
-          <RightAnswer status={testStatus}>{rightAnswer.title}</RightAnswer>
+          <RightAnswer status={testStatus}>
+            Правильный ответ: {rightAnswer.title}
+          </RightAnswer>
         )}
         <Row>
           <Button
-            disabled={!selectedVariant}
+            disabled={!selectedVariant || testStatus === TestStatus.Error}
             type="primary"
             onClick={checkAnswer}
           >
@@ -74,16 +77,12 @@ const Test: FC<Props> = ({ title, descr, variants, rightAnswer }) => {
 export default Test;
 
 const RightAnswer = styled.div<{ status: TestStatus }>`
-  ${(props) =>
-    props.status === TestStatus.Error
-      ? `
-    color: red;
-    background-color: #ff000022;
-  `
-      : `
-  color: green;
-  background-color: #00ff0022;
-  `}
+  color: ${(props) => (props.status === TestStatus.Error ? "red" : "green")};
+  background: ${(props) =>
+    props.status === TestStatus.Error ? "#ff000022" : "#00ff0022"};
+
   padding: 16px;
   border-radius: 8px;
+  margin-bottom: 16px;
+  max-width: 600px;
 `;
