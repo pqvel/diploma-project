@@ -1,11 +1,10 @@
-/*
-  Warnings:
+-- CreateTable
+CREATE TABLE "Chapter" (
+    "id" SERIAL NOT NULL,
+    "title" TEXT NOT NULL,
 
-  - You are about to drop the column `slug` on the `Chapter` table. All the data in the column will be lost.
-
-*/
--- AlterTable
-ALTER TABLE "Chapter" DROP COLUMN "slug";
+    CONSTRAINT "Chapter_pkey" PRIMARY KEY ("id")
+);
 
 -- CreateTable
 CREATE TABLE "lesson" (
