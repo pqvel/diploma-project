@@ -1,8 +1,22 @@
-import { FC } from "react";
+import { FC, FormEvent, useEffect } from "react";
 import Link from "next/link";
-import { Button, Divider, Form, Typography, Input, Breadcrumb } from "antd";
+import {
+  Button,
+  Divider,
+  Form,
+  Typography,
+  Input,
+  Breadcrumb,
+  Space,
+} from "antd";
 import { MailOutlined, UserOutlined, LockOutlined } from "@ant-design/icons";
 import AuthLayout from "@/components/layouts/AuthLayout";
+import { authService, UserData } from "@/services/AuthService";
+import {
+  nameRules,
+  emailRules,
+  passwordRules,
+} from "../../../utils/validationRules";
 
 const formStyles = {
   maxWidth: 500,
@@ -13,6 +27,20 @@ const formStyles = {
 };
 
 const Register: FC = () => {
+  const [form] = Form.useForm<UserData>();
+
+  const handleSubmit = (event: FormEvent<HTMLButtonElement>) => {
+    form
+      .validateFields()
+      .then((values) => {
+        console.log(values);
+        // authService.createUser(values);
+      })
+      .catch((info) => {
+        console.log("Validate Failed:", info);
+      });
+  };
+
   return (
     <AuthLayout>
       <Breadcrumb style={{ width: "100%" }}>
@@ -21,23 +49,40 @@ const Register: FC = () => {
         </Breadcrumb.Item>
         <Breadcrumb.Item>Регистрация</Breadcrumb.Item>
       </Breadcrumb>
-      <Form style={formStyles}>
+      <Form style={formStyles} form={form} onFinish={handleSubmit}>
         <Typography.Title level={1}>Регистрация</Typography.Title>
-        <Form.Item>
-          <Input size="large" type="text" prefix={<UserOutlined />} />
+        <Form.Item name="name" rules={nameRules}>
+          <Input
+            name="name"
+            size="large"
+            type="text"
+            prefix={<UserOutlined />}
+          />
         </Form.Item>
-        <Form.Item>
-          <Input size="large" type="email" prefix={<MailOutlined />} />
+        <Form.Item name="email" rules={emailRules}>
+          <Input
+            name="email"
+            size="large"
+            type="email"
+            prefix={<MailOutlined />}
+          />
         </Form.Item>
-        <Form.Item>
+        <Form.Item name="password" rules={passwordRules}>
           <Input.Password
+            name="password"
             size="large"
             type="password"
             prefix={<LockOutlined />}
           />
         </Form.Item>
         <Form.Item>
-          <Button style={{ width: "100%" }} type="primary" size="large">
+          <Button
+            style={{ width: "100%" }}
+            type="primary"
+            size="large"
+            htmlType="submit"
+            onSubmit={handleSubmit}
+          >
             Зарегистрироваться
           </Button>
           <Divider>Уже есть аккаунт</Divider>
