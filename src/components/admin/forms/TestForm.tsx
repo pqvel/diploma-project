@@ -1,11 +1,11 @@
 import { FC } from "react";
 import { Form, Button, Input, Space } from "antd";
 import { PlusOutlined, MinusCircleOutlined } from "@ant-design/icons";
-import { useForm } from "antd/es/form/Form";
+// import { useForm } from "antd/es/form/Form";
 
 const TestForm: FC = () => {
-  const form = useForm();
-  const add = () => {};
+  // const form = useForm();
+  // const add = () => {};
 
   return (
     <Form>
@@ -48,16 +48,6 @@ const TestForm: FC = () => {
           </>
         )}
       </Form.List>
-      <Form.Item>
-        <Button
-          type="dashed"
-          // onClick={() => add()}
-          block
-          icon={<PlusOutlined />}
-        >
-          Add field
-        </Button>
-      </Form.Item>
     </Form>
   );
 };

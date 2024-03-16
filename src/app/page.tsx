@@ -5,12 +5,16 @@ import Header from "@/components/layouts/header/Header";
 import Main from "@/components/layouts/main/Main";
 import Footer from "@/components/layouts/footer/Footer";
 import { Layout } from "antd";
+import { Container } from "@/components/UI";
+
 const App: React.FC = () => (
   <Layout>
     <Aside />
     <Layout style={{ overflowY: "auto" }}>
       <Header />
-      <Main />
+      <Container>
+        <Main />
+      </Container>
       <Footer />
     </Layout>
   </Layout>

@@ -48,16 +48,6 @@ const CorrelateForm: FC = () => {
           </>
         )}
       </Form.List>
-      <Form.Item>
-        <Button
-          type="dashed"
-          // onClick={() => add()}
-          block
-          icon={<PlusOutlined />}
-        >
-          Add field
-        </Button>
-      </Form.Item>
     </Form>
   );
 };
