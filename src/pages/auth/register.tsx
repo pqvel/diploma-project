@@ -1,26 +1,54 @@
-import { Button, Divider, Form, Typography, Input } from "antd";
+import { FC } from "react";
 import Link from "next/link";
-import React, { FC, useEffect, useState } from "react";
+import { Button, Divider, Form, Typography, Input, Breadcrumb } from "antd";
+import { MailOutlined, UserOutlined, LockOutlined } from "@ant-design/icons";
+import AuthLayout from "@/components/layouts/AuthLayout";
+
+const formStyles = {
+  maxWidth: 500,
+  width: "100%",
+  backgroundColor: "#fff",
+  padding: "20px",
+  borderRadius: 8,
+};
 
 const Register: FC = () => {
   return (
-    <Form>
-      <Typography.Title level={1}>Регистрация</Typography.Title>
-      <Form.Item>
-        <Input />
-      </Form.Item>
-      <Form.Item>
-        <Button type="primary" size="large">
-          Регистрация
-        </Button>
-        <Divider>Уже есть аккаунт</Divider>
-        <Link href="/auth/login">
-          <Button type="default" size="large">
-            Войти
+    <AuthLayout>
+      <Breadcrumb style={{ width: "100%" }}>
+        <Breadcrumb.Item>
+          <Link href="/">Главная</Link>
+        </Breadcrumb.Item>
+        <Breadcrumb.Item>Регистрация</Breadcrumb.Item>
+      </Breadcrumb>
+      <Form style={formStyles}>
+        <Typography.Title level={1}>Регистрация</Typography.Title>
+        <Form.Item>
+          <Input size="large" type="text" prefix={<UserOutlined />} />
+        </Form.Item>
+        <Form.Item>
+          <Input size="large" type="email" prefix={<MailOutlined />} />
+        </Form.Item>
+        <Form.Item>
+          <Input.Password
+            size="large"
+            type="password"
+            prefix={<LockOutlined />}
+          />
+        </Form.Item>
+        <Form.Item>
+          <Button style={{ width: "100%" }} type="primary" size="large">
+            Зарегистрироваться
           </Button>
-        </Link>
-      </Form.Item>
-    </Form>
+          <Divider>Уже есть аккаунт</Divider>
+          <Link href="/auth/login">
+            <Button style={{ width: "100%" }} type="default" size="large">
+              Войти
+            </Button>
+          </Link>
+        </Form.Item>
+      </Form>
+    </AuthLayout>
   );
 };
 

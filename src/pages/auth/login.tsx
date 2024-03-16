@@ -1,19 +1,33 @@
 import { FC } from "react";
 import Link from "next/link";
-import { Button, Form, Input, Divider, Typography } from "antd";
-import { LockOutlined, UserOutlined } from "@ant-design/icons";
+import { Button, Form, Input, Divider, Typography, Breadcrumb } from "antd";
+import { LockOutlined, MailOutlined } from "@ant-design/icons";
 import AuthLayout from "@/components/layouts/AuthLayout";
+
+const formStyles = {
+  width: "100%",
+  backgroundColor: "#fff",
+  padding: "20px",
+  borderRadius: 8,
+};
 
 const Login: FC = () => {
   const handleSubmit = () => {};
   return (
     <AuthLayout>
-      <Form>
+      <Breadcrumb style={{ width: "100%" }}>
+        <Breadcrumb.Item>
+          <Link href="/">Главная</Link>
+        </Breadcrumb.Item>
+        <Breadcrumb.Item>Войти</Breadcrumb.Item>
+      </Breadcrumb>
+
+      <Form style={formStyles}>
         <Typography.Title level={1}>Войти</Typography.Title>
         <Form.Item>
           <Input
             size="large"
-            prefix={<UserOutlined />}
+            prefix={<MailOutlined />}
             placeholder="Email"
             type="email"
           />
@@ -30,12 +44,20 @@ const Login: FC = () => {
           <Link href="/auth/restore">Забыли пароль</Link>
         </Form.Item>
         <Form.Item>
-          <Button size="large" type="primary" htmlType="submit">
+          <Button
+            style={{ maxWidth: 500, width: "100%" }}
+            size="large"
+            type="primary"
+          >
             Войти
           </Button>
           <Divider>Нет аккаунта</Divider>
           <Link href="/auth/register">
-            <Button size="large" type="default">
+            <Button
+              style={{ maxWidth: 500, width: "100%" }}
+              size="large"
+              type="default"
+            >
               Регистрация
             </Button>
           </Link>
