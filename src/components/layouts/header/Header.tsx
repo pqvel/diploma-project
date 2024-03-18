@@ -16,7 +16,7 @@ const Header: FC = () => {
   return (
     <StyledHeader>
       <Search />
-      <Link href="/account">
+      <Link href="/auth/login">
         <Avatar
           icon={<UserOutlined />}
           shape="square"

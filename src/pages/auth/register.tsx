@@ -11,7 +11,7 @@ import {
 } from "antd";
 import { MailOutlined, UserOutlined, LockOutlined } from "@ant-design/icons";
 import AuthLayout from "@/components/layouts/AuthLayout";
-import { authService, UserData } from "@/services/AuthService";
+import { authService, UserDataRegister } from "@/services/AuthService";
 import {
   nameRules,
   emailRules,
@@ -27,14 +27,14 @@ const formStyles = {
 };
 
 const Register: FC = () => {
-  const [form] = Form.useForm<UserData>();
+  const [form] = Form.useForm<UserDataRegister>();
 
-  const handleSubmit = (event: FormEvent<HTMLButtonElement>) => {
+  const handleSubmit = () => {
     form
       .validateFields()
       .then((values) => {
         console.log(values);
-        // authService.createUser(values);
+        authService.createUser(values);
       })
       .catch((info) => {
         console.log("Validate Failed:", info);

@@ -3,7 +3,8 @@ import Link from "next/link";
 import { Button, Form, Input, Divider, Typography, Breadcrumb } from "antd";
 import { LockOutlined, MailOutlined } from "@ant-design/icons";
 import AuthLayout from "@/components/layouts/AuthLayout";
-
+import { authService, UserDataLogin } from "@/services/AuthService";
+import { emailRules, passwordRules } from "../../../utils/validationRules";
 const formStyles = {
   width: "100%",
   backgroundColor: "#fff",
@@ -12,7 +13,12 @@ const formStyles = {
 };
 
 const Login: FC = () => {
-  const handleSubmit = () => {};
+  const [form] = Form.useForm<UserDataLogin>();
+
+  const handleLogin = () => {
+    form.validateFields().then(authService.login).catch(console.error);
+  };
+
   return (
     <AuthLayout>
       <Breadcrumb style={{ width: "100%" }}>
@@ -22,9 +28,9 @@ const Login: FC = () => {
         <Breadcrumb.Item>Войти</Breadcrumb.Item>
       </Breadcrumb>
 
-      <Form style={formStyles}>
+      <Form style={formStyles} form={form} onFinish={handleLogin}>
         <Typography.Title level={1}>Войти</Typography.Title>
-        <Form.Item>
+        <Form.Item name="email" rules={emailRules}>
           <Input
             size="large"
             prefix={<MailOutlined />}
@@ -32,7 +38,7 @@ const Login: FC = () => {
             type="email"
           />
         </Form.Item>
-        <Form.Item>
+        <Form.Item name="password" rules={passwordRules}>
           <Input.Password
             size="large"
             prefix={<LockOutlined />}
