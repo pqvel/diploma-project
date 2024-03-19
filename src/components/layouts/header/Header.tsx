@@ -1,29 +1,45 @@
-import { FC } from "react";
-import styled from "styled-components";
-import { Layout, Avatar } from "antd";
-import Search from "@/components/search/Search";
-import { UserOutlined } from "@ant-design/icons";
+import { FC, useEffect, useState } from "react";
 import Link from "next/link";
-
-const StyledHeader = styled(Layout.Header)`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 20px;
-`;
+import { Layout, Avatar, Button, Flex } from "antd";
+import { Container } from "@/components/UI";
+import Search from "@/components/search/Search";
 
 const Header: FC = () => {
+  const [isShowHeader, setShowHeader] = useState(true);
+
+  // useEffect(() => {
+  //   document.addEventListener("scroll")
+  // }, [])
   return (
-    <StyledHeader>
-      <Search />
-      <Link href="/auth/login">
-        <Avatar
-          icon={<UserOutlined />}
-          shape="square"
-          style={{ background: "gray" }}
-        />
-      </Link>
-    </StyledHeader>
+    <Layout.Header
+      style={{
+        padding: "0 20px",
+        background: "#fff",
+        borderBottom: "1px solid rgba(5, 5, 5, 0.06)",
+        position: "sticky",
+      }}
+    >
+      <Container>
+        <Flex align="center" justify="space-between">
+          <Search />
+          <Link href="/auth/login">
+            <div>
+              <Link href="/auth/register">
+                <Button type="text" style={{ marginRight: 8 }}>
+                  Зарегистрироваться
+                </Button>
+              </Link>
+              <Link href="/auth/login">
+                <Button type="default">Войти</Button>
+              </Link>
+            </div>
+            {/* <Avatar style={{ backgroundColor: "#fde3cf", color: "#f56a00" }}>
+          U
+        </Avatar> */}
+          </Link>
+        </Flex>
+      </Container>
+    </Layout.Header>
   );
 };
 

@@ -2,59 +2,93 @@ import { FC, ReactNode } from "react";
 import AntdMarkdown from "@/components/AntdMarkdown";
 import { Block } from "@/components/UI/Block";
 
-const markdown = `# Quod bracchia Hyperione Aello furentem clavigeram Terea
+const markdown = `# Quis inquit
 
-## Videbar Herculeae
+## Loco tegens quorum cum Hecabe structa usum
 
-Lorem markdownum veniam! Visum tibi et: comites nostra stimulis obstitit aratra
-de.
+Lorem markdownum, flectitur servet [et duo inductaque](http://www.illi-mei.net/)
+pavens recens. Hesperien murra auras stagnum: ordine retinens locus.
 
-1. Magicae iussisque valens
-2. Tutius nunc Aethionque alieni sanguine
-3. Satyri dubia passim iuga
-4. Summe in formosi
-5. Et fluens euntque versi
+    var twitter_runtime_ssl = 4 + 1;
+    if (memory - 3 + piracyCdGigabyte) {
+        wordUgcFirewall(log_ip(-4, 1, spam_bankruptcy_cpu));
+        dvd = clientMeme - alert_digital + gifSoftPush;
+    }
+    if (memory_fddi(mail_redundancy)) {
+        itunes += forumLag;
+        motion.fileFormat(cpa, platform(abendHsf), 4);
+        nybbleRgb(cybersquatter.home_ripping_pixel(5));
+    }
+    var margin_dma = 4;
 
-Bibit [iter canet exstanti](http://www.ocyroen.io/) et visaque simul vivere
-perlucentibus corymbis Phrixeaque famae Bacchum utque pars munera. Iacchus non
-minis, formidine Averna nisi, sic teque ego pectore tendit est in pennis
-videntem traxit!
+## Fiducia Maenalon longa sumptaque Euboicam festaque aurea
 
-## Altrici tempora senilis paulatimque vivebat clarum
+Ancipitemque voce: utinamque me pars imis nuda videtur qui ecce. Dum crimen nunc
+ubi Hesperidas tamen Iuppiter perdere illuc subsidere simul fortunae huc __cadis
+cum__. Casside expediunt siccis suo gladio rapax vestras et acerno carpunt
+pilas. Pronusque flammam [per](http://mare.net/postquam) Corythi armigerae
+reliquit quem: olorinis decipit, et quia nec. Di Esse neque atque esse faciem
+deum timenda, *times* unum cur resolvit *deorum*, macies somnoque adest
+torrentur.
 
-Sincera ipsas, sanguine, hic optatos hominum telluris erat vincis denique. Nox
-haec! Victoris et vimque iubet, sunt aevum hostis, Temesaea et fuerat partem
-templa totusque omnia; capillos amabam. Sed fuerat, bene reddidit: sollicita et
-monte erit facies parentem sine bella excipiunt!
+    var isa_font_sequence = dvrOffice;
+    if (flash) {
+        web_user_cable.crossplatform(localhostPublishing(ip_wizard_inkjet,
+                615799));
+        sidebarParse += parse(72);
+    }
+    if (graphicBotnet) {
+        flowchart = sli(digitalUnitIsdn);
+    }
 
-Iam dabant Cinyran quoque bello de acies pugnat voluit mundo nosti. Chromin
-sederat, gelidos aperti. Phaethon phocae loco citharae Talia sed et quos fruges
-corpus. Sine Ismario, standi et comas infectum ferunt invecta Auram stagna urbes
-quod. Figurae admovit ventis agros recuset flebant caeruleam excutit denique:
-teloque viso nec infelix rugis, veteres.
+## Gramen laesaque deduxit deposuitque
 
-\`\`\`
-const Lecture: FC = () => (
-  <input type="text">
-  <Block>
-    <AntdMarkdown>{markdown}</AntdMarkdown>
-  </Block>
-);
+Bis induit, repetam tot *ulli* prosunt divisque anhelitus pinguesque caecae?
+Tamen est erat Lycaeo: Iris dissimulator dedit nunc, exspectatum *remis*.
 
-export default Lecture;
-\`\`\`
+    if (ibmDesktopSink(floodStringIcio)) {
+        socialLink += abend_client_printer;
+        dma.router_spam_secondary(olap(duplex));
+        isa(1, 80);
+    } else {
+        wCell /= exportDebug(botnetLatency(surface, install_gnu), opacity,
+                default);
+    }
+    if (parity != file) {
+        dtd = 5 / ram;
+        ibm_petaflops_interface.page_webcam_intellectual(-2, spooling,
+                thread.ddlFlowchart.olap(hibernate));
+    }
+    if (configuration) {
+        xp(clob, queue_switch(server));
+        consolePrimaryFlops = whois(kindle_mask_virtual + 3, resolution_codec(
+                botnet_fddi_word), atmIcioSound);
+        party_chipset(ppi_access_nic(-2, loadPpc, root_cpu_throughput), 2);
+    } else {
+        soa -= management_hertz(rdf_dbms_payload, jquery_zif - hypermediaSyntax,
+                scareware);
+        systemHashtag += hexadecimal - rgb_contextual;
+    }
+    remote_cps(data);
 
-.
-<input type="text" placeholder="Введите текст здесь">
-<input type="text" placeholder="Nекст здесь">
-> Sortis habebat creditur; **oppida**, et voce. His *tibi iuranda secedere*
-> cupies non quodque molimina esto, callidus sumptis. Hydrae laterique illius,
-> *non* formam [fuit](http://sicmari.com/culmine.html), sollicitatque iubet.
-> Bracchia differt Phrygiis fronte. Nostra fratrem curvique clarus verterit
-> vestigia imagine prima, nec gramina guttae perpetuum praeferre inspicitur et
-> est, tu!
+## Membra cava sim Amoris frigida es palude
 
-Magis favilla. Pro caelo videndi, et acutae bello acta fratri Astraea, iam!`;
+Ancora bis asper vertice heros caput muneris; puer deprendere emittite Somnus.
+Abdidit matutina, lene ingentique __nulla__, dum qualis deviaque sinunt,
+__tellus ante Lyrnesia__ currus. Per et ore ille sua pascere mater. Tu et
+Maeoniaeque armo verruntur illud aconiton quereris fertur et aequor vincula
+caligine, vineta urbes contra, victum. Vitae nec publica infelix experientia
+ablata neque [ut hosti](http://incenduntque.net/)!
+
+[Penates profanus](http://modo-et.net/proelia.php) ingenti, ab intabescitque
+__ulmo__ promittit statione suum, et vos Naxoque in. Rex vertit perstat Phrygia
+tremit nostri, non et inpedienda. Ait e moratus natus sustulerat adsuetus
+*inmota suae* parte, est non membra imagine gravitate, truculenta. Frustra
+admissum magico metam Phoebo tristitiam regna, ac aut huius: per. Aere si,
+[simplex](http://apertos.io/), cupidine manibus Inarimen, te mota, quod mihi
+peregit nata Oeneus.
+
+`;
 
 const Lecture: FC = () => (
   <Block>

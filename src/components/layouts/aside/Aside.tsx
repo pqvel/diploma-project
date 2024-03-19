@@ -10,9 +10,15 @@ const Aside: FC = () => {
   };
 
   return (
-    <Layout.Sider theme="dark" breakpoint="lg" width={280} collapsedWidth="0">
+    <Layout.Sider
+      theme="light"
+      breakpoint="lg"
+      width={280}
+      collapsedWidth="0"
+      style={{ margin: "80px 40px 0 0" }}
+    >
       <Scroll maxHeight="100svh">
-        <Menu theme="dark" mode="inline" items={items} />
+        <Menu theme="light" mode="inline" items={items} />
       </Scroll>
     </Layout.Sider>
   );

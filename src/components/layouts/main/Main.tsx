@@ -9,9 +9,8 @@ const Main: FC = () => {
     <Layout.Content
       style={{
         background: "white",
-        padding: 16,
         minHeight: "unset",
-        backgroundColor: "#f4f4f4",
+        margin: "20px 0",
       }}
     >
       <Lecture />
