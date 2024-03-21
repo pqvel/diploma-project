@@ -7,6 +7,8 @@ import {
   Typography,
 } from "antd";
 import Markdown from "react-markdown";
+import { CopyBlock, tomorrowNightBright as theme } from "react-code-blocks";
+import styled from "styled-components";
 
 type TitleLevel = 1 | 2 | 3 | 4 | 5;
 
@@ -31,9 +33,17 @@ type Props = {
   children: string;
 };
 
+const StyledTypography = styled(Typography)`
+  h1 {
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+`;
+
 const AntdMarkdown: FC<Props> = ({ children }) => {
   return (
-    <Typography>
+    <StyledTypography>
       <Markdown
         components={{
           ...toAntdMarkdown(
@@ -69,14 +79,19 @@ const AntdMarkdown: FC<Props> = ({ children }) => {
               />
             );
           },
-          code: ({ children }) => {
-            return <code></code>;
-          },
+          code: ({ children = "" }) => (
+            <CopyBlock
+              text={children as string}
+              theme={theme}
+              language={"js"}
+              customStyle={{ padding: "12px" }}
+            />
+          ),
         }}
       >
         {children}
       </Markdown>
-    </Typography>
+    </StyledTypography>
   );
 };
 

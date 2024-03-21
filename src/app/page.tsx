@@ -4,19 +4,21 @@ import Aside from "@/components/layouts/aside/Aside";
 import Header from "@/components/layouts/header/Header";
 import Main from "@/components/layouts/main/Main";
 import Footer from "@/components/layouts/footer/Footer";
-import { Layout } from "antd";
+import { Divider, Layout } from "antd";
 import { Container } from "@/components/UI";
 
 const App: React.FC = () => (
-  <Layout>
-    <Aside />
-    <Layout style={{ overflowY: "auto" }}>
-      <Header />
-      <Container>
-        <Main />
-      </Container>
-      <Footer />
-    </Layout>
+  <Layout style={{ background: "#fff" }}>
+    <Header />
+    <Container>
+      <Layout style={{ background: "#fff" }}>
+        <Aside />
+        <Layout style={{ background: "#fff" }}>
+          <Main />
+          <Footer />
+        </Layout>
+      </Layout>
+    </Container>
   </Layout>
 );
 

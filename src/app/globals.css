@@ -11,3 +11,9 @@ body {
 #__next {
   width: 100%;
 }
+
+pre {
+  padding: 0 !important;
+  background: none !important;
+  border: none !important;
+}
