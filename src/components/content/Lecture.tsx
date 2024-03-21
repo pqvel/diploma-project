@@ -1,3 +1,4 @@
+"use client";
 import { FC, ReactNode } from "react";
 import AntdMarkdown from "@/components/AntdMarkdown";
 import { Block } from "@/components/UI/Block";
@@ -9,17 +10,10 @@ const markdown = `# Quis inquit
 Lorem markdownum, flectitur servet [et duo inductaque](http://www.illi-mei.net/)
 pavens recens. Hesperien murra auras stagnum: ordine retinens locus.
 
-    var twitter_runtime_ssl = 4 + 1;
-    if (memory - 3 + piracyCdGigabyte) {
-        wordUgcFirewall(log_ip(-4, 1, spam_bankruptcy_cpu));
-        dvd = clientMeme - alert_digital + gifSoftPush;
+    function createUser(username: string, password: string) {
+        console.log(username)
+        console.log(password)
     }
-    if (memory_fddi(mail_redundancy)) {
-        itunes += forumLag;
-        motion.fileFormat(cpa, platform(abendHsf), 4);
-        nybbleRgb(cybersquatter.home_ripping_pixel(5));
-    }
-    var margin_dma = 4;
 
 ## Fiducia Maenalon longa sumptaque Euboicam festaque aurea
 
@@ -31,16 +25,18 @@ reliquit quem: olorinis decipit, et quia nec. Di Esse neque atque esse faciem
 deum timenda, *times* unum cur resolvit *deorum*, macies somnoque adest
 torrentur.
 
-    var isa_font_sequence = dvrOffice;
-    if (flash) {
-        web_user_cable.crossplatform(localhostPublishing(ip_wizard_inkjet,
-                615799));
-        sidebarParse += parse(72);
-    }
-    if (graphicBotnet) {
-        flowchart = sli(digitalUnitIsdn);
-    }
-
+\`\`\`
+// созданин переменной
+var isa_font_sequence = dvrOffice;
+if (flash) {
+    web_user_cable.crossplatform(localhostPublishing(ip_wizard_inkjet,
+            615799));
+    sidebarParse += parse(72);
+}
+if (graphicBotnet) {
+    flowchart = sli(digitalUnitIsdn);
+}
+\`\`\`
 ## Gramen laesaque deduxit deposuitque
 
 Bis induit, repetam tot *ulli* prosunt divisque anhelitus pinguesque caecae?
