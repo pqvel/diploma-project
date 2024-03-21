@@ -1,6 +1,7 @@
 import { FC, useEffect, useState } from "react";
 import Link from "next/link";
 import { Layout, Avatar, Button, Flex } from "antd";
+import { MenuOutlined } from "@ant-design/icons";
 import { Container } from "@/components/UI";
 import Search from "@/components/search/Search";
 

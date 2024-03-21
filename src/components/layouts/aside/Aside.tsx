@@ -1,14 +1,11 @@
 "use client";
 import { FC } from "react";
 import { Menu, Layout } from "antd";
+import { MenuOutlined } from "@ant-design/icons";
 import { items } from "./items";
 import { Scroll } from "@/components/UI";
 
 const Aside: FC = () => {
-  const onSearch = () => () => {
-    return items;
-  };
-
   return (
     <Layout.Sider
       theme="light"

@@ -1,8 +1,9 @@
 import { FC } from "react";
-import { Layout } from "antd";
+import { Layout, Breadcrumb } from "antd";
 import Lecture from "@/components/content/Lecture";
 import Test from "@/components/content/Test";
 import Correlate from "@/components/content/Correlate";
+import LessonsNavigation from "@/components/LessonsNavigation";
 
 const Main: FC = () => {
   return (
@@ -54,6 +55,7 @@ const Main: FC = () => {
           ],
         }}
       />
+      <LessonsNavigation />
     </Layout.Content>
   );
 };
