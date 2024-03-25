@@ -15,7 +15,6 @@ const App: React.FC = () => (
         <Aside />
         <Layout style={{ background: "#fff" }}>
           <Main />
-          <Footer />
         </Layout>
       </Layout>
     </Container>

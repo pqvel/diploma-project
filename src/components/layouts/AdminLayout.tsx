@@ -1,7 +1,7 @@
 "use client";
 import { FC, ReactElement, ReactNode } from "react";
 import { Layout } from "antd";
-import Breadcrumb from "../admin/Breadcrumb";
+// import Breadcrumb from "../admin/Breadcrumb";
 import { Container } from "../UI";
 import "modern-normalize";
 import "../../app/globals.css";
@@ -34,9 +34,7 @@ const AdminLayout: FC<Props> = ({ children }) => {
     // <Flex gap="middle" wrap="wrap">
     <Layout style={layoutStyles}>
       <Header style={headerStyles}>
-        <Container>
-          <Breadcrumb />
-        </Container>
+        <Container>{/* <Breadcrumb /> */}</Container>
       </Header>
       <Content style={contentStyles}>
         <Container>{children}</Container>

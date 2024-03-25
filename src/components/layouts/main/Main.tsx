@@ -11,51 +11,58 @@ const Main: FC = () => {
       style={{
         background: "white",
         minHeight: "unset",
-        margin: "20px 0",
+        margin: "40px 0",
       }}
     >
       <Lecture />
       <Test
-        title="Repellendus molestias"
-        descr="Repellendus molestias optio aliquam quam similique minima facere laborum in soluta quidem!"
+        title="Какой тип данных обозначает отсутствие какого-либо значения?"
+        descr="Выберите один правильный ответ"
         variants={[
-          { id: "1", title: "variant 1" },
-          { id: "2", title: "variant 2" },
-          { id: "3", title: "variant 3" },
-          { id: "4", title: "variant 4" },
+          { id: "1", title: "undefined" },
+          { id: "2", title: "null" },
+          { id: "3", title: "empty" },
+          { id: "4", title: "none" },
         ]}
-        rightAnswer={{ id: "2", title: "variant 2" }}
+        rightAnswer={{ id: "2", title: "null" }}
       />
       <Correlate
         correlateItems={{
           left: [
-            { id: "1", text: "let", pairItemId: "4", isDisabled: false },
-            { id: "2", text: "var", pairItemId: "5", isDisabled: false },
-            { id: "3", text: "const", pairItemId: "6", isDisabled: false },
+            { id: "1", text: "number", pairItemId: "6", isDisabled: false },
+            { id: "2", text: "string", pairItemId: "8", isDisabled: false },
+            { id: "3", text: "boolean", pairItemId: "7", isDisabled: false },
+            { id: "4", text: "object", pairItemId: "5", isDisabled: false },
           ],
           right: [
             {
-              id: "6",
-              text: "ключевое слово языка для объявления констант. Константа — переменная, значение которой нельзя переназначит",
-              pairItemId: "3",
+              id: "5",
+              text: "Сложный тип данных имеющий определнную структуру",
+              pairItemId: "4",
               isDisabled: false,
             },
             {
-              id: "4",
-              text: "выражение позволяет объявить переменные с областью видимости ограниченной одним выражением.",
+              id: "6",
+              text: "Числовой тип данных",
               pairItemId: "1",
               isDisabled: false,
             },
             {
-              id: "5",
-              text: " Отсутствие блочной области видимости.",
+              id: "7",
+              text: "Логический тип данных",
+              pairItemId: "3",
+              isDisabled: false,
+            },
+            {
+              id: "8",
+              text: "Строковый тип данных",
               pairItemId: "2",
               isDisabled: false,
             },
           ],
         }}
       />
-      <LessonsNavigation />
+      {/* <LessonsNavigation /> */}
     </Layout.Content>
   );
 };

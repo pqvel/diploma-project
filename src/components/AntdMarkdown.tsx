@@ -57,7 +57,9 @@ const AntdMarkdown: FC<Props> = ({ children }) => {
               }
           ),
           p: ({ children }) => (
-            <Typography.Paragraph>{children}</Typography.Paragraph>
+            <Typography.Paragraph style={{ fontSize: "16px" }}>
+              {children}
+            </Typography.Paragraph>
           ),
           ol: ({ children }) => {
             const items: string[] = [];

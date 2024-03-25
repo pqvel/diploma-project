@@ -3,87 +3,60 @@ import { FC, ReactNode } from "react";
 import AntdMarkdown from "@/components/AntdMarkdown";
 import { Block } from "@/components/UI/Block";
 
-const markdown = `# Quis inquit
+const markdown = `# Типы данных
 
-## Loco tegens quorum cum Hecabe structa usum
+Значение в JavaScript всегда относится к данным определённого типа. Например, это может быть строка или число.
 
-Lorem markdownum, flectitur servet [et duo inductaque](http://www.illi-mei.net/)
-pavens recens. Hesperien murra auras stagnum: ordine retinens locus.
-
-    function createUser(username: string, password: string) {
-        console.log(username)
-        console.log(password)
-    }
-
-## Fiducia Maenalon longa sumptaque Euboicam festaque aurea
-
-Ancipitemque voce: utinamque me pars imis nuda videtur qui ecce. Dum crimen nunc
-ubi Hesperidas tamen Iuppiter perdere illuc subsidere simul fortunae huc __cadis
-cum__. Casside expediunt siccis suo gladio rapax vestras et acerno carpunt
-pilas. Pronusque flammam [per](http://mare.net/postquam) Corythi armigerae
-reliquit quem: olorinis decipit, et quia nec. Di Esse neque atque esse faciem
-deum timenda, *times* unum cur resolvit *deorum*, macies somnoque adest
-torrentur.
+Переменная в JavaScript может содержать любые данные. В один момент там может быть строка, а в другой – число:
 
 \`\`\`
-// созданин переменной
-var isa_font_sequence = dvrOffice;
-if (flash) {
-    web_user_cable.crossplatform(localhostPublishing(ip_wizard_inkjet,
-            615799));
-    sidebarParse += parse(72);
-}
-if (graphicBotnet) {
-    flowchart = sli(digitalUnitIsdn);
-}
+// Не будет ошибкой
+let message = "hello";
+message = 123456;
 \`\`\`
-## Gramen laesaque deduxit deposuitque
 
-Bis induit, repetam tot *ulli* prosunt divisque anhelitus pinguesque caecae?
-Tamen est erat Lycaeo: Iris dissimulator dedit nunc, exspectatum *remis*.
+Языки программирования, в которых такое возможно, называются «динамически типизированными». Это значит, что типы данных есть, но переменные не привязаны ни к одному из них.
 
-    if (ibmDesktopSink(floodStringIcio)) {
-        socialLink += abend_client_printer;
-        dma.router_spam_secondary(olap(duplex));
-        isa(1, 80);
-    } else {
-        wCell /= exportDebug(botnetLatency(surface, install_gnu), opacity,
-                default);
-    }
-    if (parity != file) {
-        dtd = 5 / ram;
-        ibm_petaflops_interface.page_webcam_intellectual(-2, spooling,
-                thread.ddlFlowchart.olap(hibernate));
-    }
-    if (configuration) {
-        xp(clob, queue_switch(server));
-        consolePrimaryFlops = whois(kindle_mask_virtual + 3, resolution_codec(
-                botnet_fddi_word), atmIcioSound);
-        party_chipset(ppi_access_nic(-2, loadPpc, root_cpu_throughput), 2);
-    } else {
-        soa -= management_hertz(rdf_dbms_payload, jquery_zif - hypermediaSyntax,
-                scareware);
-        systemHashtag += hexadecimal - rgb_contextual;
-    }
-    remote_cps(data);
+## Число
 
-## Membra cava sim Amoris frigida es palude
+\`\`\`
+let n = 123;
+n = 12.345;
+\`\`\`
 
-Ancora bis asper vertice heros caput muneris; puer deprendere emittite Somnus.
-Abdidit matutina, lene ingentique __nulla__, dum qualis deviaque sinunt,
-__tellus ante Lyrnesia__ currus. Per et ore ille sua pascere mater. Tu et
-Maeoniaeque armo verruntur illud aconiton quereris fertur et aequor vincula
-caligine, vineta urbes contra, victum. Vitae nec publica infelix experientia
-ablata neque [ut hosti](http://incenduntque.net/)!
+Числовой тип данных (number) представляет как целочисленные значения, так и числа с плавающей точкой.
 
-[Penates profanus](http://modo-et.net/proelia.php) ingenti, ab intabescitque
-__ulmo__ promittit statione suum, et vos Naxoque in. Rex vertit perstat Phrygia
-tremit nostri, non et inpedienda. Ait e moratus natus sustulerat adsuetus
-*inmota suae* parte, est non membra imagine gravitate, truculenta. Frustra
-admissum magico metam Phoebo tristitiam regna, ac aut huius: per. Aere si,
-[simplex](http://apertos.io/), cupidine manibus Inarimen, te mota, quod mihi
-peregit nata Oeneus.
+Существует множество операций для чисел, например, умножение *, деление /, сложение +, вычитание - и так далее.
 
+Кроме обычных чисел, существуют так называемые «специальные числовые значения», которые относятся к этому типу данных: Infinity, -Infinity и NaN.
+
+> Математические операции – безопасны
+> Математические операции в JavaScript «безопасны». Мы можем делать что угодно: делить на ноль, обращаться с нечисловыми строками как с числами и т.д.
+> Скрипт никогда не остановится с фатальной ошибкой (не «умрёт»). В худшем случае мы получим NaN как результат выполнения.
+
+Специальные числовые значения относятся к типу «число». Конечно, это не числа в привычном значении этого слова.
+
+
+\`\`\`
+let num = 10; // number
+let str = "Привет"; // string
+let bool = true; // boolean
+let x; // undefined
+let y = null; // null
+let bigInt = 12345678901234567890n; // bigInt
+let sym = Symbol("id"); // symbol
+
+console.log(typeof num); // "number"
+console.log(typeof str); // "string"
+console.log(typeof bool); // "boolean"
+console.log(typeof x); // "undefined"
+console.log(typeof y); // "object" (ошибка в языке)
+console.log(typeof bigInt); // "bigint"
+console.log(typeof sym); // "symbol"
+
+console.log(x instanceof Number); // false
+console.log(num instanceof Number); // true
+\`\`\`
 `;
 
 const Lecture: FC = () => (
