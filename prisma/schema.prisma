@@ -54,7 +54,7 @@ model Lesson {
 
 model Lecture {
   id       Int    @id @default(autoincrement())
-  lesson   Lesson @relation(fields: [lessonId], references: [id])
+  lesson   Lesson @relation(fields: [lessonId], references: [id], onDelete: Cascade)
   lessonId Int
   content  String @db.Text()
   order    Int
@@ -63,30 +63,32 @@ model Lecture {
 
 model Test {
   id        Int       @id @default(autoincrement())
-  lesson   Lesson @relation(fields: [lessonId], references: [id])
+  order Int 
+  lesson   Lesson @relation(fields: [lessonId], references: [id], onDelete:  Cascade)
   lessonId Int
   title      String @default("")
   description String @default("")
   type TypeContent @default(Test)
   typeTest TypeTest
-  questions Question[]
+  questions Question[] 
 }
+
 
 model Question {
   id                Int      @id @default(autoincrement())
-  title             String
-  testId            Int
+  title             String   @default("")
+  testId            Int      
   test              Test     @relation(fields: [testId], references: [id])
   answers           Answer[]
-  correctAnswerId   Int @unique
-  correctAnswer     Answer   @relation("CorrectAnswer", fields: [correctAnswerId], references: [id])
+  correctAnswerId   Int?      @unique
+  correctAnswer     Answer?   @relation("CorrectAnswer", fields: [correctAnswerId], references: [id], onDelete: Cascade)
 }
 
 model Answer {
   id              Int       @id @default(autoincrement())
-  text            String
+  title           String    @default("")
   questionId      Int
-  question        Question  @relation(fields: [questionId], references: [id])
+  question        Question  @relation(fields: [questionId], references: [id], onDelete: Cascade)
   correctAnswerOf Question? @relation("CorrectAnswer")
 }
 
