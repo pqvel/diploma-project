@@ -12,3 +12,91 @@ datasource db {
   provider = "mysql"
   url      = env("DATABASE_URL")
 }
+
+
+model User {
+  id            String    @id @default(cuid())
+  name          String?
+  email         String?   @unique
+  password      String?
+  emailVerified DateTime?
+  image         String?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  role          Roles     @default(User)
+
+}
+
+enum Roles {
+  Admin
+  User
+}
+
+model Chapter {
+  id Int @id @default(autoincrement())
+  slug String @unique
+  title String @unique
+  lessons Lesson[]
+  active Boolean @default(false)
+}
+
+model Lesson {
+  id Int @id @default(autoincrement())
+  chapter Chapter @relation(fields: [chapterId], references: [id])
+  chapterId Int
+  title String
+  slug String @unique
+  active Boolean @default(false)
+  // content
+  lectures Lecture[]
+  tests Test[]
+}
+
+model Lecture {
+  id       Int    @id @default(autoincrement())
+  lesson   Lesson @relation(fields: [lessonId], references: [id])
+  lessonId Int
+  content  String @db.Text()
+  order    Int
+  type TypeContent @default(Lecture)
+}
+
+model Test {
+  id        Int       @id @default(autoincrement())
+  lesson   Lesson @relation(fields: [lessonId], references: [id])
+  lessonId Int
+  title      String @default("")
+  description String @default("")
+  type TypeContent @default(Test)
+  typeTest TypeTest
+  questions Question[]
+}
+
+model Question {
+  id                Int      @id @default(autoincrement())
+  title             String
+  testId            Int
+  test              Test     @relation(fields: [testId], references: [id])
+  answers           Answer[]
+  correctAnswerId   Int @unique
+  correctAnswer     Answer   @relation("CorrectAnswer", fields: [correctAnswerId], references: [id])
+}
+
+model Answer {
+  id              Int       @id @default(autoincrement())
+  text            String
+  questionId      Int
+  question        Question  @relation(fields: [questionId], references: [id])
+  correctAnswerOf Question? @relation("CorrectAnswer")
+}
+
+enum TypeContent {
+  Lecture
+  Test
+  Correlate
+}
+
+enum TypeTest {
+  Many
+  One
+}
