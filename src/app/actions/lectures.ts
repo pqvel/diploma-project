@@ -11,7 +11,7 @@ export const createLecture = async (lessonSlug: string) => {
       _count: {
         select: {
           lectures: true,
-          exercisesWithOneAnswer: true,
+          tests: true,
         },
       },
     },
@@ -19,7 +19,7 @@ export const createLecture = async (lessonSlug: string) => {
 
   if (!lesson) notFound();
 
-  const order = lesson._count.lectures + lesson._count.exercisesWithOneAnswer;
+  const order = lesson._count.lectures + lesson._count.tests;
 
   const lecture = await db.lecture.create({
     data: {

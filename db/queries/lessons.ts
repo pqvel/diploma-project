@@ -22,7 +22,7 @@ export const getActiveLessonWithContent = async (slug: string) => {
     },
     include: {
       lectures: true,
-      exercisesWithOneAnswer: true,
+      tests: true,
     },
   });
 
@@ -30,10 +30,9 @@ export const getActiveLessonWithContent = async (slug: string) => {
     return notFound();
   }
 
-  const combinedContent = [
-    ...lesson.lectures,
-    ...lesson.exercisesWithOneAnswer,
-  ].sort((a, b) => a.order - b.order);
+  const combinedContent = [...lesson.lectures, ...lesson.tests].sort(
+    (a, b) => a.order - b.order
+  );
 
   return {
     lesson: lesson,

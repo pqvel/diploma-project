@@ -69,27 +69,29 @@ model Test {
   title      String @default("")
   description String @default("")
   type TypeContent @default(Test)
-  typeTest TypeTest
-  questions Question[] 
-}
-
-
-model Question {
-  id                Int      @id @default(autoincrement())
-  title             String   @default("")
-  testId            Int      
-  test              Test     @relation(fields: [testId], references: [id])
-  answers           Answer[]
+  typeTest TypeTest @default(One)
+  questions Answer[] 
   correctAnswerId   Int?      @unique
   correctAnswer     Answer?   @relation("CorrectAnswer", fields: [correctAnswerId], references: [id], onDelete: Cascade)
 }
 
+
+// model Question {
+//   id                Int      @id @default(autoincrement())
+//   title             String   @default("")
+//   testId            Int      
+//   test              Test     @relation(fields: [testId], references: [id])
+//   answers           Answer[]
+//   correctAnswerId   Int?      @unique
+//   correctAnswer     Answer?   @relation("CorrectAnswer", fields: [correctAnswerId], references: [id], onDelete: Cascade)
+// }
+
 model Answer {
   id              Int       @id @default(autoincrement())
   title           String    @default("")
-  questionId      Int
-  question        Question  @relation(fields: [questionId], references: [id], onDelete: Cascade)
-  correctAnswerOf Question? @relation("CorrectAnswer")
+  testId      Int
+  test        Test  @relation(fields: [testId], references: [id], onDelete: Cascade)
+  correctAnswerOf Test? @relation("CorrectAnswer")
 }
 
 enum TypeContent {

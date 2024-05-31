@@ -28,51 +28,36 @@ export const Header: FC<ChildrenProps> = ({ children }) => (
           </div>
         </Link>
       </Flex>
-
-      {/* <Hamburger openAside={openAside} collapsed={collapsedAside} />
-
-    <Link href="/auth/login">
-      <div>
-        <Link href="/auth/register">
-          <Button type="text" style={{ marginRight: 8 }}>
-            Зарегистрироваться
-          </Button>
-        </Link>
-        <Link href="/auth/login">
-          <Button type="default">Войти</Button>
-        </Link>
-      </div>
-    </Link> */}
     </Container>
   </header>
 );
 
-import styled from "styled-components";
+// import styled from "styled-components";
 
-interface Props {
-  maxHeight: string;
-}
+// interface Props {
+//   maxHeight: string;
+// }
 
-export const Scroll = styled.div<Props>`
-  max-height: ${(props) => (props.maxHeight ? props.maxHeight : "100svh")};
+// export const Scroll = styled.div<Props>`
+//   max-height: ${(props) => (props.maxHeight ? props.maxHeight : "100svh")};
 
-  &::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-    border-radius: 10px;
-    background-color: #f5f5f5;
-  }
+//   &::-webkit-scrollbar-track {
+//     -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+//     border-radius: 10px;
+//     background-color: #f5f5f5;
+//   }
 
-  &::-webkit-scrollbar {
-    width: 12px;
-    background-color: #f5f5f5;
-  }
+//   &::-webkit-scrollbar {
+//     width: 12px;
+//     background-color: #f5f5f5;
+//   }
 
-  &::-webkit-scrollbar-thumb {
-    border-radius: 10px;
-    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-    background-color: #555;
-  }
-`;
+//   &::-webkit-scrollbar-thumb {
+//     border-radius: 10px;
+//     -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+//     background-color: #555;
+//   }
+// `;
 
 export const Block: FC<ChildrenProps> = ({ children }) => {
   return <div className="mb-4">{children}</div>;

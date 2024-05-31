@@ -1,3 +1,4 @@
+"use server";
 import { notFound } from "next/navigation";
 import { TypeTest } from "@prisma/client";
 import { z } from "zod";
