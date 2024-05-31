@@ -6,7 +6,7 @@ import { notFound } from "next/navigation";
 import AdminLayout from "@/components/layouts/AdminLayout";
 import ChangeLessonForm from "@/app/admin/_components/forms/lessons/ChangeLessonForm";
 import AddContentForm from "@/app/admin/_components/forms/lessonContent/AddContentForm";
-import { Lecture, Test, TypeContent } from "@prisma/client";
+import { Lecture, Test, TypeContent, Answer } from "@prisma/client";
 import ChangeLectureForm from "@/app/admin/_components/forms/lessonContent/ChangeLectureForm";
 import ChangeTestForm from "@/app/admin/_components/forms/lessonContent/ChangeTestForm";
 
@@ -29,7 +29,11 @@ const getData = async (chapterSlug: string, lessonSlug: string) => {
         },
         include: {
           lectures: true,
-          tests: true,
+          tests: {
+            include: {
+              answers: true,
+            },
+          },
         },
       },
     },
@@ -47,6 +51,10 @@ const getData = async (chapterSlug: string, lessonSlug: string) => {
     ) as Content[],
   };
 };
+
+interface TestWithAnswers extends Test {
+  answers: Answer[];
+}
 
 type Content = Lecture | Test;
 
@@ -72,7 +80,13 @@ const ChangeLessonPage: FC<Props> = async ({ params }) => {
             );
 
           case TypeContent.Test:
-            return <ChangeTestForm key={item.id} test={item as Test} />;
+            return (
+              <ChangeTestForm
+                key={item.id}
+                test={item as TestWithAnswers}
+                lessonSlug={params.lessonSlug}
+              />
+            );
           default:
             return null;
         }

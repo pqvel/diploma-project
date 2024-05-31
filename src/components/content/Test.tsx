@@ -3,20 +3,13 @@ import { FC, useState } from "react";
 import { Form, Typography, Radio, Space, Button, Row } from "antd";
 import styled from "styled-components";
 import { Block } from "@/components/ui/Wrappers";
+import { Test as TestType, Answer } from "@prisma/client";
 
 const { Title, Paragraph } = Typography;
-
-type Variant = {
-  id: string;
-  title: string;
-};
-
-type Props = {
-  title: string;
-  descr: string;
-  variants: Variant[];
-  rightAnswer: Variant;
-};
+const { Group } = Radio;
+interface TestTypeWithAnswers extends TestType {
+  answers: Answer[];
+}
 
 export const enum TestStatus {
   Idle = "IDLE",
@@ -24,17 +17,17 @@ export const enum TestStatus {
   Completed = "COMPLETED",
 }
 
-const ExercisesWithOneAnswer: FC<Props> = ({
+const Test: FC<TestTypeWithAnswers> = ({
   title,
-  descr,
-  variants,
-  rightAnswer,
+  description,
+  answers,
+  correctAnswerId,
 }) => {
-  const [selectedVariant, setSelectedVariant] = useState<Variant>();
+  const [selectedVariant, setSelectedVariant] = useState<Answer>();
   const [testStatus, setTestStatus] = useState<TestStatus>(TestStatus.Idle);
 
   const checkAnswer = () => {
-    selectedVariant!.id === rightAnswer.id
+    selectedVariant!.id === correctAnswerId
       ? setTestStatus(TestStatus.Completed)
       : setTestStatus(TestStatus.Error);
   };
@@ -44,26 +37,27 @@ const ExercisesWithOneAnswer: FC<Props> = ({
       <Form>
         <Typography>
           <Title level={3}>{title}</Title>
-          <Paragraph>{descr}</Paragraph>
+          <Paragraph>{description}</Paragraph>
         </Typography>
-        <Radio.Group style={{ marginBottom: 16 }}>
+        <Group style={{ marginBottom: 16 }}>
           <Space direction="vertical">
-            {variants.map(({ title, id }) => (
+            {answers.map((answer) => (
               <Radio
-                onChange={() => setSelectedVariant({ title, id })}
-                key={id}
-                value={title}
+                onChange={() => setSelectedVariant(answer)}
+                key={answer.id}
+                value={answer.title}
                 disabled={testStatus !== TestStatus.Idle}
               >
-                {title}
+                {answer.title}
               </Radio>
             ))}
           </Space>
-        </Radio.Group>
+        </Group>
         <Space size={16} />
         {testStatus !== TestStatus.Idle && (
           <RightAnswer status={testStatus}>
-            Правильный ответ: {rightAnswer.title}
+            Правильный ответ:{" "}
+            {answers.find((item) => item.id === correctAnswerId)?.title}
           </RightAnswer>
         )}
         <Row>
@@ -80,7 +74,7 @@ const ExercisesWithOneAnswer: FC<Props> = ({
   );
 };
 
-export default ExercisesWithOneAnswer;
+export default Test;
 
 const RightAnswer = styled.div<{ status: TestStatus }>`
   color: ${(props) => (props.status === TestStatus.Error ? "red" : "green")};

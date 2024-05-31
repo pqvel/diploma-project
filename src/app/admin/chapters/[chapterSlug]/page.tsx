@@ -26,10 +26,8 @@ const getData = async (chapterSlug: string) => {
     },
   });
 
-  if (!chapter) notFound();
-
   return {
-    lessons: chapter.lessons,
+    lessons: chapter?.lessons,
   };
 };
 
@@ -61,7 +59,7 @@ const LessonsPage: FC<Props> = async ({ params }) => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {lessons.map((lesson) => (
+          {lessons!.map((lesson) => (
             <LessonItem
               lesson={lesson}
               chapterSlug={params.chapterSlug}

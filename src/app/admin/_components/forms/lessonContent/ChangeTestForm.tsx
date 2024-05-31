@@ -5,30 +5,49 @@ import { Block } from "@/components/ui/Wrappers";
 import { changeTest } from "@/app/actions/tests";
 import { Button, Input } from "antd";
 import TextArea from "antd/es/input/TextArea";
-import { Test } from "@prisma/client";
+import { Test, Answer } from "@prisma/client";
+import ChangeAnswerForm from "./ChangeAnswerForm";
+import { createAnswer } from "@/app/actions/answers";
+
+interface TestWithAnswers extends Test {
+  answers: Answer[];
+}
 
 type Props = {
-  test: Test;
+  test: TestWithAnswers;
+  lessonSlug: string;
 };
 
-const ChangeTestForm: FC<Props> = ({ test }) => {
+const ChangeTestForm: FC<Props> = ({ test, lessonSlug }) => {
   const [__, action] = useFormState(changeTest, null);
 
   return (
     <Block>
       <form action={action}>
-        <Input className=" mb-4" name="title" defaultValue={test.title} />
-        <TextArea
-          className=" mb-4"
-          name="description"
-          defaultValue={test.description}
-        />
+        <div className="mb-4">
+          <Input name="title" defaultValue={test.title} />
+        </div>
+        <div className="mb-4">
+          <TextArea name="description" defaultValue={test.description} />
+        </div>
         {/* <Select> */}
         <input type="hidden" name="typeTest" value={test.typeTest} />
-        <Button htmlType="submit">Сохранить</Button>
+        <input type="hidden" name="id" value={test.id} />
+        <input type="hidden" name="lessonSlug" value={lessonSlug} />
+        <Button className="mb-4" htmlType="submit">
+          Сохранить
+        </Button>
       </form>
 
-      <form></form>
+      {test.answers.map((answer) => (
+        <ChangeAnswerForm
+          key={answer.id}
+          answer={answer}
+          isCorrect={test.correctAnswerId === answer.id}
+        />
+      ))}
+
+      <Button onClick={() => createAnswer(test.id)}>Добавить вариант</Button>
     </Block>
   );
 };

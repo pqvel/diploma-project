@@ -22,7 +22,11 @@ export const getActiveLessonWithContent = async (slug: string) => {
     },
     include: {
       lectures: true,
-      tests: true,
+      tests: {
+        include: {
+          answers: true,
+        },
+      },
     },
   });
 

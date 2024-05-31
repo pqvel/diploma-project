@@ -1,4 +1,4 @@
 import Lecture from "./Lecture";
-import ExercisesWithOneAnswer from "./ExercisesWithOneAnswer";
+import Test from "./Test";
 
-export { Lecture, ExercisesWithOneAnswer };
+export { Lecture, Test };

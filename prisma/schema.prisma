@@ -70,7 +70,7 @@ model Test {
   description String @default("")
   type TypeContent @default(Test)
   typeTest TypeTest @default(One)
-  questions Answer[] 
+  answers Answer[] 
   correctAnswerId   Int?      @unique
   correctAnswer     Answer?   @relation("CorrectAnswer", fields: [correctAnswerId], references: [id], onDelete: Cascade)
 }

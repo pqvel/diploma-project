@@ -1,13 +1,14 @@
+"use server";
 import { revalidatePath } from "next/cache";
 import { z } from "zod";
 import { db } from "@/db";
 
-export const createAnswer = async (questionId: number) => {
+export const createAnswer = async (testId: number) => {
   const answer = await db.answer.create({
     data: {
-      question: {
+      test: {
         connect: {
-          id: questionId,
+          id: testId,
         },
       },
     },
@@ -53,7 +54,7 @@ export const changeCorrectAnswer = async (
         id: answerId,
       },
       include: {
-        question: true,
+        test: true,
       },
     });
 
@@ -61,12 +62,12 @@ export const changeCorrectAnswer = async (
       throw new Error("Answer not found");
     }
 
-    const updatedQuestion = await db.question.update({
+    const updatedQuestion = await db.test.update({
       where: {
-        id: answer.questionId,
+        id: answer.testId,
       },
       data: {
-        correctAnswerId: isCorrect ? answer.questionId : null,
+        correctAnswerId: isCorrect ? answer.testId : null,
       },
       include: {
         correctAnswer: true,

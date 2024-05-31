@@ -1,4 +1,4 @@
-"use server";
+"use client";
 import { FC, ReactNode } from "react";
 import ReactMakdown from "react-markdown";
 import { Lecture as LectureType } from "@prisma/client";
@@ -27,7 +27,7 @@ const ToAntdMarkdown = (
   return markdownComponents;
 };
 
-const Lecture: FC<LectureType> = async ({ content }) => {
+const Lecture: FC<LectureType> = ({ content }) => {
   return (
     <Typography>
       <ReactMakdown
