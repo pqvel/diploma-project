@@ -15,7 +15,7 @@ const MainLayout: FC<Props> = async ({ children }) => {
 
   return (
     <Layout style={{ backgroundColor: "#fff" }}>
-      <header className="sticky flex items-center p-0 bg-white border-b border-b-gray-400 h-16">
+      <header className="sticky flex items-center p-0 bg-white border-b border-b-gray-300 h-16">
         <Container>
           <Flex align="center" justify="space-between">
             <Link href="/auth/login">

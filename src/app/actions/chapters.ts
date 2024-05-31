@@ -72,6 +72,8 @@ export const changeChapterActive = async (id: number, active: boolean) => {
 };
 
 export const deleteChapter = async (id: number) => {
+  console.log(id);
+
   const data = await db.chapter.delete({
     where: {
       id,

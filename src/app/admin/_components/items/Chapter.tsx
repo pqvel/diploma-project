@@ -8,6 +8,7 @@ import { MenuOutlined } from "@ant-design/icons";
 import { TableRow, TableColumn } from "@/app/admin/_components/ui/table";
 
 export const ChapterItem: FC<Chapter> = ({ active, id, title, slug }) => {
+  console.log(id);
   return (
     <TableRow>
       <TableColumn>

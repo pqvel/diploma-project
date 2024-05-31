@@ -48,13 +48,15 @@ export const changeTest = async (state: any, formData: any) => {
     lessonSlug: z.string().min(1),
   });
 
-  const { id, typeTest, title, description, lessonSlug } = schema.parse({
+  const obj = {
     id: formData.get("id"),
     typeTest: formData.get("typeTest"),
-    title: formData.get("tilte"),
+    title: formData.get("title"),
     description: formData.get("description"),
     lessonSlug: formData.get("lessonSlug"),
-  });
+  };
+
+  const { id, typeTest, title, description, lessonSlug } = schema.parse(obj);
 
   const test = await db.test.update({
     where: {
