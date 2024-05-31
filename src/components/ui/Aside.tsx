@@ -8,32 +8,27 @@ import { Backdrop } from "@/components/ui/Backdrop";
 import { Scroll } from "@/components/ui/Wrappers";
 import { Chapter as PrismaChapter, Lesson } from "@prisma/client";
 
-const StyledAside = styled(Layout.Sider)`
-  &.aside {
-    margin: 0px 40px 0 0;
-    background-color: #fff;
-  }
+// const StyledAside = styled(Layout.Sider)`
+//   @media (max-width: 992px) {
+//     &.aside {
+//       position: fixed;
+//       z-index: 10;
+//       top: 0;
+//       left: 0;
+//       height: 100%;
+//       padding: 20px 0;
+//       margin: 0;
+//       background-color: #fff;
+//       border-inline-end: 1px solid rgba(5, 5, 5, 0.06);
 
-  @media (max-width: 992px) {
-    &.aside {
-      position: fixed;
-      z-index: 10;
-      top: 0;
-      left: 0;
-      height: 100%;
-      padding: 20px 0;
-      margin: 0;
-      background-color: #fff;
-      border-inline-end: 1px solid rgba(5, 5, 5, 0.06);
-
-      .ant-menu {
-        &-inline {
-          border-inline-end: none;
-        }
-      }
-    }
-  }
-`;
+//       .ant-menu {
+//         &-inline {
+//           border-inline-end: none;
+//         }
+//       }
+//     }
+//   }
+// `;
 
 interface Chapter extends PrismaChapter {
   lessons: Lesson[];
@@ -59,6 +54,11 @@ const Aside: FC<Props> = ({ collapsedAside, chapters, closeAside }) => {
         theme="light"
         breakpoint="lg"
         width={280}
+        style={{
+          backgroundColor: "#fff",
+          margin: "0 40px 0 0",
+          width: "320px",
+        }}
         collapsedWidth="0"
         trigger={null}
         collapsible

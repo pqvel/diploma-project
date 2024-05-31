@@ -6,8 +6,9 @@ import { notFound } from "next/navigation";
 import AdminLayout from "@/components/layouts/AdminLayout";
 import ChangeLessonForm from "@/app/admin/_components/forms/lessons/ChangeLessonForm";
 import AddContentForm from "@/app/admin/_components/forms/lessonContent/AddContentForm";
-import { TypeContent } from "@prisma/client";
+import { Lecture, Test, TypeContent } from "@prisma/client";
 import ChangeLectureForm from "@/app/admin/_components/forms/lessonContent/ChangeLectureForm";
+import ChangeTestForm from "@/app/admin/_components/forms/lessonContent/ChangeTestForm";
 
 type Props = {
   params: {
@@ -28,7 +29,7 @@ const getData = async (chapterSlug: string, lessonSlug: string) => {
         },
         include: {
           lectures: true,
-          // exercisesWithOneAnswer: true,
+          tests: true,
         },
       },
     },
@@ -41,9 +42,13 @@ const getData = async (chapterSlug: string, lessonSlug: string) => {
   return {
     chapter,
     lesson,
-    content: [...lesson.lectures].sort((a, b) => a.order - b.order),
+    content: [...lesson.lectures, ...lesson.tests].sort(
+      (a, b) => a.order - b.order
+    ) as Content[],
   };
 };
+
+type Content = Lecture | Test;
 
 const ChangeLessonPage: FC<Props> = async ({ params }) => {
   const { chapter, lesson, content } = await getData(
@@ -53,7 +58,7 @@ const ChangeLessonPage: FC<Props> = async ({ params }) => {
 
   return (
     <AdminLayout>
-      <Title level={1}>Создание новой главы</Title>
+      <Title level={1}>Изменить урок</Title>
       <ChangeLessonForm
         chapterSlug={params.chapterSlug}
         lesson={lesson}
@@ -63,13 +68,11 @@ const ChangeLessonPage: FC<Props> = async ({ params }) => {
         switch (item.type) {
           case TypeContent.Lecture:
             return (
-              <ChangeLectureForm
-                key={item.id}
-                lecture={item}
-                lessonSlug={lesson.slug}
-              />
+              <ChangeLectureForm key={item.id} lecture={item as Lecture} />
             );
 
+          case TypeContent.Test:
+            return <ChangeTestForm key={item.id} test={item as Test} />;
           default:
             return null;
         }
