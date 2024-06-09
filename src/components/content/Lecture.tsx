@@ -44,15 +44,17 @@ const Lecture: FC<LectureType> = ({ content }) => {
             <Paragraph style={{ fontSize: "16px" }}>{children}</Paragraph>
           ),
           ol: ({ children }) => {
+            const c = children as {
+              type: string;
+              props: { children: string };
+            }[];
             const items: string[] = [];
-            // eslint-disable-next-line
-            children!.forEach(
-              (item: { type: string; props: { children: string } }) => {
-                if (item.type) {
-                  items.push(item.props.children);
-                }
+
+            c!.forEach((item) => {
+              if (item.type) {
+                items.push(item.props.children);
               }
-            );
+            });
 
             return (
               <List

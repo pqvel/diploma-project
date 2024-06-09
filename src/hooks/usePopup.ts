@@ -38,7 +38,7 @@ export const usePopup = (collapsedWidth: number = 0): UsePopupReturnType => {
         document.body.style.overflow = "auto";
       }
     });
-  }, []);
+  }, [collapsedWidth]);
 
   return {
     collapsed,
