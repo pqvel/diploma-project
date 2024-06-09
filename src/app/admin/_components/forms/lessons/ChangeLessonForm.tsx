@@ -3,19 +3,17 @@ import { FC } from "react";
 import { useFormState } from "react-dom";
 import { Input, Button } from "antd";
 import { changeLesson } from "@/app/actions/lessons";
-import { Lesson, Lecture, ExercisesWithOneAnswer } from "@prisma/client";
+import { Lesson, Lecture, Test } from "@prisma/client";
 import { Block } from "@/components/ui/Wrappers";
 
 type Props = {
   chapterSlug: string;
   lesson: Lesson;
-  content: Array<Lecture | ExercisesWithOneAnswer>;
+  content: Array<Lecture | Test>;
 };
 
 const ChangeLessonForm: FC<Props> = ({ chapterSlug, lesson }) => {
-  const [__, action] = useFormState(changeLesson, {
-    title: "",
-  });
+  const [__, action] = useFormState(changeLesson, null);
 
   return (
     <Block>
