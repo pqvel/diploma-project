@@ -26,6 +26,12 @@ const MainPage: FC = async () => {
             Исследуйте новые возможности с нами
           </p>
         </div>
+        <div className="bg-white border border-gray-300 rounded-lg p-6 text-center">
+          <p className="text-lg text-gray-700">Учите JavaScript с нами</p>
+        </div>
+        <div className="bg-white border border-gray-300 rounded-lg p-6 text-center">
+          <p className="text-lg text-gray-700">Создавайте свои проекты</p>
+        </div>
       </div>
     </MainLayout>
   );
