@@ -3,7 +3,7 @@ import { FC } from "react";
 import MainLayout from "@/components/layouts/MainLayout";
 
 const MainPage: FC = async () => {
-  return <MainLayout>page</MainLayout>;
+  return <MainLayout>pag</MainLayout>;
 };
 
 export default MainPage;
