@@ -18,14 +18,14 @@ const MainLayout: FC<Props> = async ({ children }) => {
       <header className="sticky flex items-center p-0 bg-white border-b border-b-gray-300 h-16">
         <Container>
           <Flex align="center" justify="space-between">
-            <Link href="/auth/login">
+            <Link href="/login">
               <div>
                 <Link href="/auth/register">
                   <Button type="text" className=" mr-3">
                     Зарегистрироваться
                   </Button>
                 </Link>
-                <Link href="/auth/login">
+                <Link href="/login">
                   <Button type="default">Войти</Button>
                 </Link>
               </div>

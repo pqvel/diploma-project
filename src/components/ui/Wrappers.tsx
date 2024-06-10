@@ -15,14 +15,14 @@ export const Header: FC<ChildrenProps> = ({ children }) => (
     <Container>
       <Flex align="center" justify="space-between">
         {children}
-        <Link href="/auth/login">
+        <Link href="/login">
           <div>
             <Link href="/auth/register">
               <Button type="text" style={{ marginRight: 8 }}>
                 Зарегистрироваться
               </Button>
             </Link>
-            <Link href="/auth/login">
+            <Link href="/login">
               <Button type="default">Войти</Button>
             </Link>
           </div>
