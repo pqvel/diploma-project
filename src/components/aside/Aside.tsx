@@ -27,7 +27,7 @@ const Aside: FC<Props> = ({ children }) => {
       </button>
       <div
         className={clsx(
-          "fixed top-0 left-0 flex flex-col items-end h-full overflow-auto w-80 transition-all bg-white z-30 -translate-x-80 lg:translate-x-0 lg:relative lg:top-auto lg:left-auto",
+          "fixed top-0 left-0 flex flex-col items-end h-full overflow-auto w-80 transition-all bg-white z-30 lg:z-0 -translate-x-80 lg:translate-x-0 lg:relative lg:top-auto lg:left-auto",
           {
             "translate-x-0": isOpen,
           }
