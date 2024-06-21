@@ -58,7 +58,7 @@ const Login: FC = () => {
             <Button className=" mr-5" type="primary" htmlType="submit">
               Log in
             </Button>
-            Or <a href="">register now!</a>
+            {/* Or <a href="">register now!</a> */}
           </Form.Item>
         </form>
       </Card>

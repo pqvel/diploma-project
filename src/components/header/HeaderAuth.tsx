@@ -12,11 +12,11 @@ const HeaderAuth: FC = () => {
   if (!session) {
     return (
       <Flex align="center" justify="end">
-        <Link href="/register">
+        {/* <Link href="/register">
           <Button type="text" className=" mr-3">
             Зарегистрироваться
           </Button>
-        </Link>
+        </Link> */}
         <Link href="/login">
           <Button type="default">Войти</Button>
         </Link>
