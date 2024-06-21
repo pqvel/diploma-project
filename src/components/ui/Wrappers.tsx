@@ -17,7 +17,7 @@ export const Header: FC<ChildrenProps> = ({ children }) => (
         {children}
         <Link href="/login">
           <div>
-            <Link href="/auth/register">
+            <Link href="/register">
               <Button type="text" style={{ marginRight: 8 }}>
                 Зарегистрироваться
               </Button>
