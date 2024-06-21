@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import { AntdRegistry } from "@ant-design/nextjs-registry";
 import "./globals.scss";
 import NextTopLoader from "nextjs-toploader";
+import { SessionWrapper } from "@/components/wrappers/SessionProvider";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -19,7 +20,9 @@ export default function RootLayout({
     <html lang="ru">
       <body className={inter.className}>
         <NextTopLoader showSpinner={false} color="black" />
-        <AntdRegistry>{children}</AntdRegistry>
+        <SessionWrapper>
+          <AntdRegistry>{children}</AntdRegistry>
+        </SessionWrapper>
       </body>
     </html>
   );

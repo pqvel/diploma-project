@@ -17,10 +17,12 @@ const AsideMenu: FC<Props> = ({ chapters }) => {
     <Menu
       theme="light"
       mode="inline"
-      className="border-r border-r-gray-300"
-      style={{
-        borderRight: "1px solid #d6d6d6",
-      }}
+      className="lg:border-r lg:border-r-gray-300"
+      style={
+        {
+          // borderRight: "1px solid #d6d6d6",
+        }
+      }
       items={
         chapters.map((chapter) => ({
           key: chapter.id,
