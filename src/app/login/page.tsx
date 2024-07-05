@@ -34,12 +34,13 @@ const Login: FC = () => {
       <Card className="max-w-lg w-full shadow">
         <form action={handleSubmit} ref={form} name="login">
           <Form.Item
-            name="username"
+            name="email"
             rules={[{ required: true, message: "Please input your Username!" }]}
           >
             <Input
               prefix={<UserOutlined className="site-form-item-icon" />}
               placeholder="Username"
+              name="email"
             />
           </Form.Item>
 
@@ -51,6 +52,7 @@ const Login: FC = () => {
               prefix={<LockOutlined className="site-form-item-icon" />}
               type="password"
               placeholder="Password"
+              name="password"
             />
           </Form.Item>
 
